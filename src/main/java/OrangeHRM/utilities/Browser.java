@@ -1,11 +1,14 @@
 package OrangeHRM.utilities;
 
+import OrangeHRM.pageObjects.global.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,7 +20,9 @@ public class Browser {
     public WebDriver driver;
     public String pageURL;
     String browserName;
-    String jsonContent;
+    public String USERNAME;
+    public String PASSWORD;
+    public String ProfileDropdown;
 
     public WebDriver initializeTheBrowser() {
         Properties properties = new Properties();
@@ -35,6 +40,11 @@ public class Browser {
 
         //TODO - To get url input form Terminal or Config.properties File
         pageURL = System.getProperty("webpageURL") != null ? System.getProperty("webpageURL") : properties.getProperty("webpageURL");
+
+        USERNAME = properties.getProperty("UserName");
+        PASSWORD = properties.getProperty("UserPassword");
+        ProfileDropdown = properties.getProperty("ProfileDropdown");
+
 
         if (browserName.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
@@ -54,5 +64,17 @@ public class Browser {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         return driver;
+    }
+
+    @BeforeMethod(alwaysRun = true)
+    public void lanchBrowser() throws InterruptedException {
+        //TODO - Initializing Browser
+        driver = initializeTheBrowser();
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public void setShutdown() throws InterruptedException {
+        Waits.longPause();
+        driver.quit();
     }
 }

@@ -10,25 +10,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class Waits {
-    WebDriver driver;
+    static WebDriver driver;
 
     public Waits(WebDriver driver) {
-        this.driver = driver;
-    }
-
-    public void waitForElementToAppear(By findBy) { //TODO - Visibility of Web Element using BY Locator
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(findBy));
-    }
-
-    public void waitForElementToAppear(WebElement findBy) { //TODO - Visibility of Web Element using WebElement Locator
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        wait.until(ExpectedConditions.visibilityOf(findBy));
-    }
-
-    public void waitForElementToDisappear(WebElement findBy) { //TODO - invisibility of Web Element using WebElement Locator
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        wait.until(ExpectedConditions.invisibilityOf(findBy));
+        Waits.driver = driver;
     }
 
     public static void pause() throws InterruptedException {

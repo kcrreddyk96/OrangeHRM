@@ -1,12 +1,13 @@
 package OrangeHRM.pageObjects.global;
 
-import OrangeHRM.pageObjects.global.HomePage;
+import OrangeHRM.pageObjects.modules.DashboardPage;
+import OrangeHRM.utilities.Browser;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public class LoginPage extends GlobalPageObjects {
     WebDriver driver;
 
     String currentURL;
@@ -33,6 +34,7 @@ public class LoginPage {
     WebElement resetpassword;
 
     public LoginPage(WebDriver driver) {
+        super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -55,11 +57,9 @@ public class LoginPage {
     }
 
 
-    public HomePage setLogin(String UserName, String UserPassword) {
+    public void setLogin(String UserName, String UserPassword) {
         username.sendKeys(UserName);
         userpassword.sendKeys(UserPassword);
         userlogin.click();
-        HomePage homepage = new HomePage(driver);
-        return homepage;
     }
 }

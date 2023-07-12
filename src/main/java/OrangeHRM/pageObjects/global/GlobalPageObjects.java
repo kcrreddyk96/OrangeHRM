@@ -1,10 +1,18 @@
 package OrangeHRM.pageObjects.global;
 
+import OrangeHRM.utilities.Waits;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import java.time.Duration;
+
 
 public class GlobalPageObjects {
     WebDriver driver;
@@ -15,78 +23,157 @@ public class GlobalPageObjects {
     }
 
     @FindBy(xpath = "//input[@placeholder='Search']")
-    WebElement search;
+    private WebElement search;
 
     @FindBy(xpath = "//span[normalize-space()='Admin']")
-    WebElement adminPage;
+    private WebElement adminPage;
 
     @FindBy(xpath = "//span[normalize-space()='PIM']")
-    WebElement PMIPage;
+    private WebElement PMIPage;
 
     @FindBy(xpath = "//span[normalize-space()='Leave']")
-    WebElement leavePage;
+    private WebElement leavePage;
 
     @FindBy(xpath = "//span[normalize-space()='Time']")
-    WebElement timePage;
+    private WebElement timePage;
 
     @FindBy(xpath = "//span[normalize-space()='Recruitment']")
-    WebElement recruitmentPage;
+    private WebElement recruitmentPage;
 
     @FindBy(xpath = "//span[normalize-space()='My Info']")
-    WebElement myInfoPage;
+    private WebElement myInfoPage;
 
     @FindBy(xpath = "//span[normalize-space()='Performance']")
-    WebElement performancePage;
+    private WebElement performancePage;
 
     @FindBy(xpath = "//span[normalize-space()='Dashboard']")
-    WebElement dashboardPage;
+    private WebElement dashboardPage;
 
     @FindBy(xpath = "//span[normalize-space()='Directory']")
-    WebElement directoryPage;
+    private WebElement directoryPage;
 
     @FindBy(xpath = "//span[normalize-space()='Maintenance']")
-    WebElement maintenancePage;
+    private WebElement maintenancePage;
 
     @FindBy(xpath = "//span[normalize-space()='Buzz']")
-    WebElement buzzPage;
-
-    @FindBy(css = ".bi-chevron-right")
-    WebElement bugerIconClosed;
+    private WebElement buzzPage;
 
     @FindBy(css = ".bi-chevron-left")
-    WebElement bugerIconOpened;
+    private WebElement bugerIconClosed;
 
-    @FindBy(css = ".oxd-userdropdown-tab")
-    WebElement userProfileDropdown;
+    @FindBy(css = ".bi-chevron-right")
+    private WebElement bugerIconOpened;
+
+    @FindBy(xpath = "//div[@class='oxd-topbar-header-userarea']/ul/li/span/i")
+    private WebElement userProfileDropdown;
 
     @FindBy(xpath = "//a[normalize-space()='About']")
-    WebElement about;
+    private WebElement about;
 
     @FindBy(xpath = "//a[normalize-space()='Support']")
-    WebElement support;
+    private WebElement support;
 
     @FindBy(xpath = "//a[normalize-space()='Change Password']")
-    WebElement changePassword;
+    private WebElement changePassword;
 
     @FindBy(xpath = "//a[normalize-space()='Logout']")
-    WebElement logout;
+    private WebElement logout;
 
-    public void setSearch(String SearchString) {
-        search.sendKeys(SearchString);
-    }
+    By results = By.xpath("//li[@class='oxd-main-menu-item-wrapper']");
 
-    public void profiledropdown(String SelectDropdown) {
-        Select dropdown = new Select(userProfileDropdown);
+    @FindBy(xpath = "(//li[@class='oxd-main-menu-item-wrapper'])[1]")
+    private WebElement selectItem;
+
+    public void profiledropdown(String SelectDropdown) throws InterruptedException {
+        userProfileDropdown.click();
+        Waits.shortPause();
+        Actions profiledrop = new Actions(driver);
+
         if (SelectDropdown.equalsIgnoreCase("about")) {
-            dropdown.selectByVisibleText("About");
+            profiledrop.doubleClick(about).build().perform();
         } else if (SelectDropdown.equalsIgnoreCase("support")) {
-            dropdown.selectByVisibleText("Support");
+            profiledrop.doubleClick(support).build().perform();
         } else if (SelectDropdown.equalsIgnoreCase("change password")) {
-            dropdown.selectByVisibleText("Change Password");
+            profiledrop.doubleClick(changePassword).build().perform();
         } else if (SelectDropdown.equalsIgnoreCase("logout")) {
-            dropdown.selectByVisibleText("Logout");
+            profiledrop.doubleClick(logout).build().perform();
         } else {
             System.out.println("Dropdown value is not correct to select");
+            Assert.fail("Dropdown value is not correct to select");
         }
+    }
+
+    public void closeBugerIcon() {
+        bugerIconClosed.click();
+    }
+
+    public void openBugerIcon() {
+        bugerIconOpened.click();
+    }
+
+    public void setSearch(String SearchString) {
+        Actions searchItems = new Actions(driver);
+        searchItems.sendKeys(search, SearchString).build().perform();
+        selectItem.click();
+    }
+
+    public void adminModule() {
+        adminPage.click();
+    }
+
+    public void pimModule() {
+        PMIPage.click();
+    }
+
+    public void leaveModule() {
+        leavePage.click();
+    }
+
+    public void timeModule() {
+        timePage.click();
+    }
+
+    public void recruitmentModule() {
+        recruitmentPage.click();
+    }
+
+    public void myInfoModule() {
+        myInfoPage.click();
+    }
+
+    public void performanceModule() {
+        performancePage.click();
+    }
+
+    public void dashboardModule() {
+        dashboardPage.click();
+    }
+
+    public void directoryModule() {
+        directoryPage.click();
+    }
+
+    public void maintenanceModule() {
+        maintenancePage.click();
+    }
+
+    public void buzzModule() {
+        buzzPage.click();
+    }
+
+
+    public void waitforElementtoAppear(By findBy) { // TODO - Visibility of Web Element using BY Locator
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(findBy));
+    }
+
+    public void waitforElementtoAppear(WebElement findBy) { // TODO - Visibility of Web Element using WebElement Locator
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(findBy));
+    }
+
+    public void waitforElementtoDisappear(WebElement element) { // TODO - invisibility of Web Element using WebElement Locator
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.invisibilityOf(element));
     }
 }
