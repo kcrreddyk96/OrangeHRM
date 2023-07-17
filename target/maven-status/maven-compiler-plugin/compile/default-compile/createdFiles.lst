@@ -1,0 +1,15 @@
+OrangeHRM\pageObjects\modules\admin\AdminJob.class
+OrangeHRM\utilities\Scroll.class
+OrangeHRM\pageObjects\modules\DashboardPage.class
+OrangeHRM\pageObjects\global\GlobalPageObjects.class
+OrangeHRM\utilities\HashMapConverter.class
+OrangeHRM\pageObjects\global\LoginPage.class
+OrangeHRM\utilities\HashMapConverter$1.class
+OrangeHRM\utilities\Screenshot.class
+OrangeHRM\pageObjects\modules\PimPage.class
+OrangeHRM\pageObjects\modules\admin\AdminPage.class
+OrangeHRM\pageObjects\modules\admin\AdminQualifications.class
+OrangeHRM\resources\ExtentReporter.class
+OrangeHRM\pageObjects\modules\admin\AdminOrganization.class
+OrangeHRM\utilities\Waits.class
+OrangeHRM\utilities\Browser.class
