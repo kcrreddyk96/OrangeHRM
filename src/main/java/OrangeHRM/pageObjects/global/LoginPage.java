@@ -1,7 +1,6 @@
 package OrangeHRM.pageObjects.global;
 
 import OrangeHRM.pageObjects.modules.DashboardPage;
-import OrangeHRM.utilities.Browser;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

@@ -166,9 +166,10 @@ public class AdminJob extends GlobalPageObjects {
     }
 
     //TODO - Currency Selection
-    public void selectCurrency(String CurrentCodeINR) throws InterruptedException {
+    private void selectCurrency(String CurrentCodeINR) throws InterruptedException {
         //countCurrency.forEach(curr->System.out.println(curr.getText()));
-        WebElement currency = countCurrency.stream().filter(curr -> curr.getText().contains(CurrentCodeINR)).findFirst().orElse(null);
+        WebElement currency = countCurrency.stream().filter(curr ->
+                curr.getText().contains(CurrentCodeINR)).findFirst().orElse(null);
         System.out.println(currency);
         currency.click();
     }

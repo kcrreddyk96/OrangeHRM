@@ -1,6 +1,7 @@
 package OrangeHRM.pageObjects.modules.admin;
 
 import OrangeHRM.pageObjects.global.GlobalPageObjects;
+import OrangeHRM.utilities.Scroll;
 import OrangeHRM.utilities.Waits;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -40,37 +41,37 @@ public class AdminOrganization extends GlobalPageObjects {
     //TODO - Admin General Information PageObjects
     @FindBy(css = ".oxd-switch-input--active")
     private WebElement generaleditcheckbox;
-    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
+    @FindBy(xpath = "//div[@class='oxd-grid-item oxd-grid-item--gutters organization-name-container']/div/div[2]/input")
     private WebElement generalorganizationname;
 
-    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[3]")
+    @FindBy(xpath = "(//div[@class='oxd-grid-item oxd-grid-item--gutters']/div/div[2]/input)[1]")
     private WebElement generalregistrationnumber;
 
-    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[4]")
+    @FindBy(xpath = "(//div[@class='oxd-grid-item oxd-grid-item--gutters']/div/div[2]/input)[2]")
     private WebElement generaltaxid;
 
-    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[5]")
+    @FindBy(xpath = "(//div[@class='oxd-grid-item oxd-grid-item--gutters']/div/div[2]/input)[3]")
     private WebElement generalphonenumber;
 
-    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[6]")
+    @FindBy(xpath = "(//div[@class='oxd-grid-item oxd-grid-item--gutters']/div/div[2]/input)[4]")
     private WebElement generalfax;
 
-    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[7]")
+    @FindBy(xpath = "(//div[@class='oxd-grid-item oxd-grid-item--gutters']/div/div[2]/input)[5]")
     private WebElement generalemail;
 
-    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[8]")
+    @FindBy(xpath = "(//div[@class='oxd-grid-item oxd-grid-item--gutters']/div/div[2]/input)[6]")
     private WebElement generaladdressstreet1;
 
-    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[9]")
+    @FindBy(xpath = "(//div[@class='oxd-grid-item oxd-grid-item--gutters']/div/div[2]/input)[7]")
     private WebElement generaladdressstreet2;
 
-    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[10]")
+    @FindBy(xpath = "(//div[@class='oxd-grid-item oxd-grid-item--gutters']/div/div[2]/input)[8]")
     private WebElement generalcity;
 
-    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[11]")
+    @FindBy(xpath = "(//div[@class='oxd-grid-item oxd-grid-item--gutters']/div/div[2]/input)[9]")
     private WebElement generalprovince;
 
-    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[12]")
+    @FindBy(xpath = "(//div[@class='oxd-grid-item oxd-grid-item--gutters']/div/div[2]/input)[10]")
     private WebElement generalpostalcode;
 
     @FindBy(css = ".oxd-select-text--active")
@@ -167,49 +168,68 @@ public class AdminOrganization extends GlobalPageObjects {
     @FindBy(css = ".oxd-dialog-close-button-position")
     private WebElement xclose;
 
-    public void selectCountry(String SelectedCountry) {
+    private void selectCountry(String SelectedCountry) {
         country.click();
-        WebElement countryresult = selectscountry.stream().filter(country -> country.getText().contains(SelectedCountry)).findFirst().orElse(null);
+        WebElement countryresult = selectscountry.stream().filter(country -> country.getText().equalsIgnoreCase(SelectedCountry)).findFirst().orElse(null);
         System.out.println(countryresult);
         countryresult.click();
     }
 
-    public void accessAndEditGeneralInformation(String GeneralORGName, String GeneralRegistrationNumber, String GeneralTaxID, String GeneralPhone, String GeneralFax, String GeneralAddress1, String GeneralCity, String GeneralProvince, String GeneralPostal, String SelectedCountry, String GeneralNotes) throws InterruptedException {
+    //TODO - Admin Access And Edit General Information
+    public void accessAndEditGeneralInformation(String GeneralORGName, String GeneralRegistrationNumber, String GeneralTaxID, String GeneralPhone, String GeneralFax, String GeneralAddress1, String GeneralAddress2, String GeneralCity, String GeneralProvince, String GeneralPostal, String SelectedCountry, String GeneralNotes) throws InterruptedException {
         organization.click();
-        Waits.shortPause();
         generalinformation.click();
-        Waits.shortPause();
         generaleditcheckbox.click();
         Waits.shortPause();
         generalorganizationname.sendKeys(CONTROL, "a", Keys.DELETE);
         Waits.shortPause();
         generalorganizationname.sendKeys(GeneralORGName);
+
+        generalregistrationnumber.sendKeys(CONTROL, "a", Keys.DELETE);
         Waits.shortPause();
         generalregistrationnumber.sendKeys(GeneralRegistrationNumber);
+
+        generaltaxid.sendKeys(CONTROL, "a", Keys.DELETE);
         Waits.shortPause();
         generaltaxid.sendKeys(GeneralTaxID);
+
+        generalphonenumber.sendKeys(CONTROL, "a", Keys.DELETE);
         Waits.shortPause();
         generalphonenumber.sendKeys(GeneralPhone);
+
+        generalfax.sendKeys(CONTROL, "a", Keys.DELETE);
         Waits.shortPause();
         generalfax.sendKeys(GeneralFax);
+
+        generaladdressstreet1.sendKeys(CONTROL, "a", Keys.DELETE);
         Waits.shortPause();
         generaladdressstreet1.sendKeys(GeneralAddress1);
+
+        generaladdressstreet2.sendKeys(CONTROL, "a", Keys.DELETE);
+        Waits.shortPause();
+
+        generalcity.sendKeys(CONTROL, "a", Keys.DELETE);
         Waits.shortPause();
         generalcity.sendKeys(GeneralCity);
-        Waits.shortPause();
+
         generalprovince.sendKeys(CONTROL, "a", Keys.DELETE);
         Waits.shortPause();
         generalprovince.sendKeys(GeneralProvince);
+
+        generalpostalcode.sendKeys(CONTROL, "a", Keys.DELETE);
         Waits.shortPause();
         generalpostalcode.sendKeys(GeneralPostal);
-        Waits.shortPause();
+
+        Scroll.longScrollDown(driver);
         selectCountry(SelectedCountry);
+
+        generalnotes.sendKeys(CONTROL, "a", Keys.DELETE);
         Waits.shortPause();
         generalnotes.sendKeys(GeneralNotes);
-        Waits.shortPause();
         save.click();
     }
 
+    //TODO - Admin search Locations
     public void searchLocations(String LocationName, String SelectedCountry) throws InterruptedException {
         organization.click();
         Waits.shortPause();
@@ -222,6 +242,7 @@ public class AdminOrganization extends GlobalPageObjects {
         search.click();
     }
 
+    //TODO - Admin Add Locations
     public void addLocation(String Name, String City, String Province, String SelectedCountry, String Phone, String Fax, String sendAddress, String LocationNotes) throws InterruptedException {
         organization.click();
         Waits.shortPause();
@@ -247,11 +268,13 @@ public class AdminOrganization extends GlobalPageObjects {
         save.click();
     }
 
-    public WebElement searchORGStructure(String DeptName) {
+    //TODO - Admin search ORG Structure
+    private WebElement searchORGStructure(String DeptName) {
         WebElement OrgStructureResults = structureElements.stream().filter(orgresult -> orgresult.getText().contains(DeptName)).findFirst().orElse(null);
         return OrgStructureResults;
     }
 
+    //TODO - Admin change Organization Structure
     public void changeOrganizationStructure(String DeptName, String UnitOperation) throws InterruptedException {
         organization.click();
         Waits.shortPause();
@@ -262,17 +285,18 @@ public class AdminOrganization extends GlobalPageObjects {
         OrgResults = searchORGStructure(DeptName);
         Waits.shortPause();
         if (UnitOperation.contains("Delete")) {
-            OrgResults.findElement(strDelete);
+            OrgResults.findElement(strDelete).click();
         } else if (UnitOperation.contains("Edit")) {
-            OrgResults.findElement(strEdit);
+            OrgResults.findElement(strEdit).click();
         } else if (UnitOperation.contains("AddUnit")) {
-            OrgResults.findElement(strAddUnit);
+            OrgResults.findElement(strAddUnit).click();
         } else {
             System.out.println("Entered Value is not match");
             Assert.fail("Entered Value is not match");
         }
     }
 
+    //TODO - Admin Add Units Organization Structure
     public void addOrganizationUnit(String UnitID, String UnitName, String UnitDesc) throws InterruptedException {
         organization.click();
         Waits.shortPause();

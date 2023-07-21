@@ -67,14 +67,21 @@ public class Browser {
     }
 
     @BeforeMethod(alwaysRun = true)
-    public void lanchBrowser() throws InterruptedException {
+    public void setLaunchBrowser() {
         //TODO - Initializing Browser
         driver = initializeTheBrowser();
+        LoginPage loginpage = new LoginPage(driver);
+        loginpage.getURL(pageURL);
+        loginpage.setLogin(USERNAME, PASSWORD);
     }
 
     @AfterMethod(alwaysRun = true)
     public void setShutdown() throws InterruptedException {
-        Waits.longPause();
+        LoginPage loginpage = new LoginPage(driver);
+        loginpage.dashboardModule();
+        Waits.shortPause();
+        loginpage.profiledropdown("logout");
+        Waits.shortPause();
         driver.quit();
     }
 }

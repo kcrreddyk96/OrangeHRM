@@ -207,7 +207,6 @@ public class AdminPage extends GlobalPageObjects {
         }
         search.click();
     }
-
 }
 
 

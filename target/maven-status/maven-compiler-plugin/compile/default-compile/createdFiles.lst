@@ -1,5 +1,6 @@
 OrangeHRM\pageObjects\modules\admin\AdminJob.class
 OrangeHRM\utilities\Scroll.class
+OrangeHRM\pageObjects\modules\admin\AdminMore.class
 OrangeHRM\pageObjects\modules\DashboardPage.class
 OrangeHRM\pageObjects\global\GlobalPageObjects.class
 OrangeHRM\utilities\HashMapConverter.class
