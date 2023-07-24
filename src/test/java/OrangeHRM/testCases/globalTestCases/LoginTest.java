@@ -4,7 +4,11 @@ import OrangeHRM.pageObjects.global.LoginPage;
 import OrangeHRM.pageObjects.modules.admin.AdminPage;
 import OrangeHRM.pageObjects.modules.DashboardPage;
 import OrangeHRM.utilities.Browser;
+import OrangeHRM.utilities.YAMLtoHashMapConverter;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.util.HashMap;
 
 public class LoginTest extends Browser {
 
@@ -22,14 +26,15 @@ public class LoginTest extends Browser {
     }
 */
 
-    @Test
-    public void loginLogoutValidationTest() throws InterruptedException {
-        loginpage.setLogin("Admin", "admin123");
-        dashboardpage.closeBugerIcon();
+    @Test(dataProviderClass = YAMLtoHashMapConverter.class, dataProvider = "yamlDataProvider")
+    public void loginLogoutValidationTest(HashMap<String,String>hashMap) throws InterruptedException {
+        loginpage.setLogin(hashMap.get("userName"),hashMap.get("userPassword"));
+        /*dashboardpage.closeBugerIcon();
         dashboardpage.openBugerIcon();
         dashboardpage.setSearch("admin");
         adminpage.addAdminUser("Admin", "akane", "Enabled", "akane", "admin123", "admin123");
-        dashboardpage.profiledropdown("logout1");
+       */
+        adminpage.profiledropdown(hashMap.get("logout"));
 
     }
 

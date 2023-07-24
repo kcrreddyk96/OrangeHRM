@@ -47,7 +47,7 @@ public class AdminJobTest extends Browser {
         Waits.pause();
         //TODO - Adding Admin Jobs Section
         AdminJob adminjob = new AdminJob(driver);
-        adminjob.adminAddPayGrades("Sal", "INR", "2500", "5000");
+        adminjob.adminAddPayGrades("Salary", "INR", "2500", "5000");
     }
 
     @Test(priority = 3, groups = {"Admin", "Regression"})
