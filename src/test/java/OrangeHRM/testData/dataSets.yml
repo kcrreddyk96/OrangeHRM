@@ -1,0 +1,9 @@
+Logindetails:
+  userName : Admin
+  userPassword : admin123
+
+AdminSearchData:
+  searchUserName : pa
+  searchModule : Admin
+  searchByEmpName : Paul  Collings
+  searchByStatus: Enabled

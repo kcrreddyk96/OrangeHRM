@@ -153,7 +153,6 @@ public class AdminJob extends GlobalPageObjects {
         selectCurrency(CurrentCodeINR);
         Waits.shortPause();
         minpay.sendKeys(MinPay);
-        Waits.shortPause();
         maxpay.sendKeys(MaxPay);
         Waits.shortPause();
         currencysave.click();

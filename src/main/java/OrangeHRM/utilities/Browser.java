@@ -67,7 +67,7 @@ public class Browser {
     }
 
     @BeforeMethod(alwaysRun = true)
-    public void setLaunchBrowser() {
+    public void setLaunchBrowser() throws InterruptedException {
         //TODO - Initializing Browser
         driver = initializeTheBrowser();
         LoginPage loginpage = new LoginPage(driver);

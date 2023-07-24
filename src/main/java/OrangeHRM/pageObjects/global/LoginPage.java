@@ -1,15 +1,19 @@
 package OrangeHRM.pageObjects.global;
 
-import OrangeHRM.pageObjects.modules.DashboardPage;
+import OrangeHRM.utilities.Waits;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class LoginPage extends GlobalPageObjects {
     WebDriver driver;
 
     String currentURL;
+
+    @FindBy(css = ".oxd-topbar-header-breadcrumb-module")
+    private WebElement currentpage;
 
     @FindBy(xpath = "//input[@name='username']")
     WebElement username;
@@ -31,6 +35,12 @@ public class LoginPage extends GlobalPageObjects {
 
     @FindBy(xpath = ".orangehrm-forgot-password-button--reset")
     WebElement resetpassword;
+
+    @FindBy(css = ".oxd-alert-content-text")
+    private WebElement errortext;
+
+    @FindBy(css = ".oxd-alert--error")
+    private WebElement errormessage;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -56,9 +66,41 @@ public class LoginPage extends GlobalPageObjects {
     }
 
 
-    public void setLogin(String UserName, String UserPassword) {
+    public String getCurrentPageURL() {
+        currentURL = driver.getCurrentUrl();
+        return currentURL;
+    }
+
+    public String getCurrentPageTitle() {
+        String currentPage = currentpage.getText();
+        return currentPage;
+    }
+
+    public String getErrorMessage() throws InterruptedException {
+        Waits.shortPause();
+        String error = errortext.getText();
+        return error;
+    }
+
+    public String errorValidationTest() throws InterruptedException {
+        if (getCurrentPageURL().contains("auth/login")) {
+            getErrorMessage();
+            Assert.fail("Test Failed due to " + getErrorMessage());
+            return getErrorMessage();
+        } else {
+            String successmessage = "Login Successful";
+            getCurrentPageTitle();
+            Assert.assertEquals(getCurrentPageTitle(), "Dashboard");
+            System.out.println(successmessage);
+            return getCurrentPageTitle();
+        }
+    }
+
+    public void setLogin(String UserName, String UserPassword) throws InterruptedException {
         username.sendKeys(UserName);
         userpassword.sendKeys(UserPassword);
         userlogin.click();
+        Waits.shortPause();
+        errorValidationTest();
     }
 }
