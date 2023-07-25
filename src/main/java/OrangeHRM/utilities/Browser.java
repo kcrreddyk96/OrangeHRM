@@ -49,7 +49,7 @@ public class Browser {
         if (browserName.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
-            options.setBinary("C://Users//KC - Reddy//AppData//Local//BraveSoftware//Brave-Browser//Application//brave.exe");
+            options.setBinary("C://Program Files//BraveSoftware//Brave-Browser//Application//brave.exe");
             driver = new ChromeDriver(options);
             System.out.println("Chrome Browser is Selected " + driver);
         } else if (browserName.equalsIgnoreCase("firefox")) {
