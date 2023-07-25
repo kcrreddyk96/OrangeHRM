@@ -20,6 +20,6 @@ public class AdminOrganizationTest extends Browser {
         AdminOrganization adminorganization = new AdminOrganization(driver);
         adminorganization.accessAndEditGeneralInformation("ORANGE HRM", "ORG125IND0005",
                 "ORG0005", "1234567895", "50051", "1-2-3,Street 05",
-                "Hyderabad", "Hyderabad", "Telangana", "500001", "India", OrgNotes);
+                "Hyderabad, Telangana", "Hyderabad", "Telangana", "500001", "India", OrgNotes);
     }
 }

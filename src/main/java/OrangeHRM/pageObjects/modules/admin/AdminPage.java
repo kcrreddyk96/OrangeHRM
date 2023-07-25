@@ -178,6 +178,7 @@ public class AdminPage extends GlobalPageObjects {
             Assert.fail("Incorrect Dropdown value to Search UserRole");
         }
         search.click();
+        Waits.shortPause();
     }
 
     //TODO - Admin Searching Employee By Name

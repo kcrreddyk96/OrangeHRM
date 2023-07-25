@@ -14,3 +14,4 @@ OrangeHRM\resources\ExtentReporter.class
 OrangeHRM\pageObjects\modules\admin\AdminOrganization.class
 OrangeHRM\utilities\Waits.class
 OrangeHRM\utilities\Browser.class
+OrangeHRM\utilities\YAMLtoHashMapConverter.class

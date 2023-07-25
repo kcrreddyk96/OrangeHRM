@@ -1,9 +1,90 @@
-Logindetails:
-  userName : Admin
-  userPassword : admin123
+# Admin Adding new Admin User
+addAdminUser:
+  SelectRole: 'Admin'
+  EmpName: 'Paul'
+  SelectStatus: 'Enabled'
+  UserName: 'admin'
+  UserPassword: 'admin123'
+  ConfirmPassword: 'admin123'
 
-AdminSearchData:
-  searchUserName : pa
-  searchModule : Admin
-  searchByEmpName : Paul  Collings
-  searchByStatus: Enabled
+# Admin Searching Employee
+searchByUserName:
+  SearchUserName: 'Paul'
+
+searchByUserRole:
+  UserRole: 'Admin'
+
+searchByEmpName:
+  EMPName: 'Paul  Collings'
+
+searchByStatus:
+  SearchStatus: 'Enabled'
+
+# Admin Organization -> Admin Access And Edit General Information
+accessAndEditGeneralInformation:
+  GeneralORGName: 'ORANGE HRM'
+  GeneralRegistrationNumber: 'ORG125IND0005'
+  GeneralTaxID: 'ORG0005'
+  GeneralPhone: '914-458-5555'
+  GeneralFax: '50051'
+  GeneralAddress1: '538 Teal Plaza,Secaucus,'
+  GeneralAddress2: 'New Jersey 07094, USA.'
+  GeneralCity: 'Secaucus'
+  GeneralProvince: 'New Jersey'
+  GeneralPostal: '07094'
+  SelectedCountry: 'USA'
+  GeneralNotes: 'Orange HRM is CRM Tool, OrangeHRM provides a scalable HRM solution for small and midsize businesses.'
+
+searchLocations:
+  LocationName: 'New Jersey'
+  SelectedCountry: 'USA'
+
+addLocation:
+  Name: 'Earthling Plaza'
+  City: 'New York'
+  Province: 'New York'
+  SelectedCountry: 'USA'
+  Phone: '914-458-0055'
+  Fax: '510036'
+  sendAddress: 'Earthing street,Suite 12G New York, New York 10036 USA.'
+  LocationNotes: 'New Company Location'
+
+searchORGStructure:
+  DeptName: 'IT'
+
+changeOrganizationStructure:
+  DeptName: 'Engineering'
+  UnitOperation: 'Delete'
+
+addOrganizationUnit:
+  UnitID: '005'
+  UnitName: 'Engineering to Improve'
+  UnitDesc: 'Engineering is the practice of using natural science, mathematics, and the scientific method to solve problems, increase efficiency and productivity, and improve systems.'
+
+# Admin Job Page
+# Admin Adding new Job Titles
+adminAddJobTitles:
+  JobTitle :
+  JobDesc :
+  JobNotes :
+
+adminAddPayGrades:
+  PayGradeName :
+  CurrentCodeINR :
+  MinPay :
+  MaxPay :
+
+adminAddingNewEmploymentStatus:
+  EmploymentName :
+
+adminAddJobCategories:
+  JobCategorieName :
+
+adminAddWorkshift:
+  ShiftName :
+  FromStartHour :
+  FromStartMin :
+  FromAMPM :
+  ToEndHour :
+  ToEndMin :
+  ToAMPM :
