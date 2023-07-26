@@ -39,11 +39,6 @@ public class YAMLtoHashMapConverter extends Browser {
 
     //TODO - For Multiple Data Items in DataSets
     @DataProvider
-    public static Object[][] addAdminUser() {
-        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "addAdminUser");
-    }
-
-    @DataProvider
     public static Object[][] searchByUserName() {
         return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "searchByUserName");
     }
@@ -94,6 +89,11 @@ public class YAMLtoHashMapConverter extends Browser {
     }
 
     @DataProvider
+    public static Object[][] addAdminUser() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "addAdminUser");
+    }
+
+    @DataProvider
     public static Object[][] adminAddJobTitles() {
         return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminAddJobTitles");
     }
@@ -117,5 +117,6 @@ public class YAMLtoHashMapConverter extends Browser {
     public static Object[][] adminAddWorkshift() {
         return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminAddWorkshift");
     }
+
 
 }

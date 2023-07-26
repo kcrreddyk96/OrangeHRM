@@ -144,6 +144,7 @@ public class AdminQualifications extends GlobalPageObjects {
         return eduRecords;
     }
 
+    //TODO - Admin Qualifications Searching Education Degree Record Page Method
     public void setOperationsOnEducation(String Degree, String EducationRecordOperation) {
         qualifications.click();
         education.click();

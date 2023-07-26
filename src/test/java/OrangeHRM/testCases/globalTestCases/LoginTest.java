@@ -1,11 +1,10 @@
 package OrangeHRM.testCases.globalTestCases;
 
 import OrangeHRM.pageObjects.global.LoginPage;
-import OrangeHRM.pageObjects.modules.admin.AdminPage;
+import OrangeHRM.pageObjects.modules.admin.AdminUserManagement;
 import OrangeHRM.pageObjects.modules.DashboardPage;
 import OrangeHRM.utilities.Browser;
 import OrangeHRM.utilities.YAMLtoHashMapConverter;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -14,7 +13,7 @@ public class LoginTest extends Browser {
 
     LoginPage loginpage = new LoginPage(driver);
     DashboardPage dashboardpage = new DashboardPage(driver);
-    AdminPage adminpage = new AdminPage(driver);
+    AdminUserManagement adminpage = new AdminUserManagement(driver);
 
 
 /*

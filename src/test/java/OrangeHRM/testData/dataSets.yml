@@ -1,25 +1,65 @@
-# Admin Adding new Admin User
-addAdminUser:
-  SelectRole: 'Admin'
-  EmpName: 'Paul'
-  SelectStatus: 'Enabled'
-  UserName: 'admin'
-  UserPassword: 'admin123'
-  ConfirmPassword: 'admin123'
-
+# Admin User Management Module Page
 # Admin Searching Employee
 searchByUserName:
-  SearchUserName: 'Paul'
+  SearchUserName: Paul
 
 searchByUserRole:
-  UserRole: 'Admin'
+  UserRole: Admin
 
 searchByEmpName:
   EMPName: 'Paul  Collings'
 
 searchByStatus:
-  SearchStatus: 'Enabled'
+  SearchStatus: Enabled
 
+# Admin Adding new Admin User
+addAdminUser:
+  SelectRole: Admin
+  EmpName: Paul
+  SelectStatus: Enabled
+  UserName: admin
+  UserPassword: 'admin123'
+  ConfirmPassword: 'admin123'
+# ****************************** Page Brake ************************************** #
+
+# Admin Job Module Page
+# Admin Adding new Job Titles
+adminAddJobTitles:
+  JobTitle: Software Quality Test Engineer
+  JobDesc: We are currently seeking a Software Test Engineer with a strong manual testing background who has understanding of SQL and basic scripting knowledge to work closely with our Development and QA teams in Chicago or Naperville office.
+    This person will sit in our Integration team and is responsible for testing the Fieldglass application in order to maintain product quality.
+  JobNotes: Working if not extensive knowledge of Selenium, SOAP UI, and XML,
+    Basic scripting knowledge such as VBS or similar,
+    Experience with building an automation framework from scratch,
+    Ability to thrive in a fast paced start-up environment.
+
+adminAddPayGrades:
+  PayGradeName: Salary
+  CurrentCodeINR: INR
+  MinPay: '2500'
+  MaxPay: '5000'
+
+adminAddingNewEmploymentStatus:
+  EmploymentName: Long Term Role
+
+adminAddJobCategories:
+  JobCategorieName: IT
+
+adminAddWorkshift:
+  ShiftName: Day Shift
+  FromStartHour: '10'
+  FromStartMin: '00'
+  FromAMPM: AM
+  ToEndHour: '05'
+  ToEndMin: '30'
+  ToAMPM: PM
+
+# Admin Qualifications Add New Membership Record Page Method
+addNewMembershipRecord:
+  NameOfMembership:
+# ****************************** Page Brake ************************************** #
+
+# Admin Organization Module Pages
 # Admin Organization -> Admin Access And Edit General Information
 accessAndEditGeneralInformation:
   GeneralORGName: 'ORANGE HRM'
@@ -29,62 +69,109 @@ accessAndEditGeneralInformation:
   GeneralFax: '50051'
   GeneralAddress1: '538 Teal Plaza,Secaucus,'
   GeneralAddress2: 'New Jersey 07094, USA.'
-  GeneralCity: 'Secaucus'
+  GeneralCity: Secaucus
   GeneralProvince: 'New Jersey'
   GeneralPostal: '07094'
-  SelectedCountry: 'USA'
+  SelectedCountry: USA
   GeneralNotes: 'Orange HRM is CRM Tool, OrangeHRM provides a scalable HRM solution for small and midsize businesses.'
 
 searchLocations:
   LocationName: 'New Jersey'
-  SelectedCountry: 'USA'
+  SelectedCountry: USA
 
 addLocation:
   Name: 'Earthling Plaza'
   City: 'New York'
   Province: 'New York'
-  SelectedCountry: 'USA'
+  SelectedCountry: USA
   Phone: '914-458-0055'
   Fax: '510036'
   sendAddress: 'Earthing street,Suite 12G New York, New York 10036 USA.'
   LocationNotes: 'New Company Location'
 
 searchORGStructure:
-  DeptName: 'IT'
+  DeptName: IT
 
 changeOrganizationStructure:
-  DeptName: 'Engineering'
-  UnitOperation: 'Delete'
+  DeptName: Engineering
+  UnitOperation: Delete
 
 addOrganizationUnit:
   UnitID: '005'
   UnitName: 'Engineering to Improve'
-  UnitDesc: 'Engineering is the practice of using natural science, mathematics, and the scientific method to solve problems, increase efficiency and productivity, and improve systems.'
+  UnitDesc: Engineering is the practice of using natural science, mathematics, and the scientific method to solve problems,
+    Increase efficiency and productivity, and improve systems.
+# ****************************** Page Brake ************************************** #
 
-# Admin Job Page
-# Admin Adding new Job Titles
-adminAddJobTitles:
-  JobTitle :
-  JobDesc :
-  JobNotes :
+# Admin Qualifications Module Pages
+# Admin Qualifications Skills Page
+setOperationsOnSkill:
+  SkillName:
+  SkillRecordOperation:
 
-adminAddPayGrades:
-  PayGradeName :
-  CurrentCodeINR :
-  MinPay :
-  MaxPay :
+# Admin Qualifications Add New Skills Record Page Method
+addNewSkillsRecord:
+  SkillName:
+  SkillDesc:
 
-adminAddingNewEmploymentStatus:
-  EmploymentName :
+# Admin Qualifications Searching Education Degree Record Page Method
+setOperationsOnEducation:
+  Degree:
+  EducationRecordOperation:
 
-adminAddJobCategories:
-  JobCategorieName :
+# Admin Qualifications Add New Education Degree Record Page Method
+addNewEductationRecord:
+  EduDegreeName:
 
-adminAddWorkshift:
-  ShiftName :
-  FromStartHour :
-  FromStartMin :
-  FromAMPM :
-  ToEndHour :
-  ToEndMin :
-  ToAMPM :
+# Admin Qualifications License Record Page Method
+setOperationsOnLicenses:
+  LicenseName:
+  LicenseRecordOperation:
+
+# Admin Qualifications Add New License Record Page Method
+addNewLicenseRecord:
+  LicensedName:
+
+# Admin Qualifications Language Record Page Method
+setOperationsOnLanguages:
+  LanguageName:
+  LanguageRecordOperation:
+
+# Admin Qualifications Add New Language Record Page Method
+addNewLanguageRecord:
+  AddLanguageName:
+
+# Admin Qualifications Membership Record Page Method
+setOperationsOnMemberships:
+  MembershipName:
+  MembershipDetails:
+# ****************************** Page Brake ************************************** #
+
+# Admin Nationalities Module Pages
+# Admin Searching Nationalities Records Method
+setOperationsOnNationalities:
+  NameOfTheNation:
+  NationRecordOperation:
+
+# Admin Adding Nationalities Records Method
+addNewNationalitiesRecord:
+  NationalName:
+# ****************************** Page Brake ************************************** #
+
+# Admin Corporate Branding Module Pages
+# Admin Changing Corporate Branding Records Method
+addCorporateBranding:
+  PrimaryColorCode:
+  SecondaryColorCode:
+  PrimaryFontColorCode:
+  SecondaryFontColorCode:
+  GradientColorCode1:
+  GradientColorCode2:
+  DisplaySocialMediaYesNo:
+# ****************************** Page Brake ************************************** #
+
+# Admin Configuration Module Pages
+
+
+
+# ****************************** Page Brake ************************************** #
