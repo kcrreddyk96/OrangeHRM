@@ -230,6 +230,7 @@ public class AdminMore extends GlobalPageObjects {
         }
     }
 
+    //TODO - Admin Adding Nationalities Records Method
     public void addNewNationalitiesRecord(String NationalName) throws InterruptedException {
         more.click();
         nationalities.click();
@@ -240,6 +241,7 @@ public class AdminMore extends GlobalPageObjects {
         save.click();
     }
 
+    //TODO - Admin Changing Corporate Branding Records Method
     public void addCorporateBranding(String PrimaryColorCode, String SecondaryColorCode, String PrimaryFontColorCode, String SecondaryFontColorCode, String GradientColorCode1, String GradientColorCode2, String DisplaySocialMediaYesNo) throws InterruptedException {
         more.click();
         corporatebranding.click();

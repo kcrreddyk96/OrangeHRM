@@ -8,8 +8,8 @@ OrangeHRM\pageObjects\global\LoginPage.class
 OrangeHRM\utilities\HashMapConverter$1.class
 OrangeHRM\utilities\Screenshot.class
 OrangeHRM\pageObjects\modules\PimPage.class
-OrangeHRM\pageObjects\modules\admin\AdminPage.class
 OrangeHRM\pageObjects\modules\admin\AdminQualifications.class
+OrangeHRM\pageObjects\modules\admin\AdminUserManagement.class
 OrangeHRM\resources\ExtentReporter.class
 OrangeHRM\pageObjects\modules\admin\AdminOrganization.class
 OrangeHRM\utilities\Waits.class
