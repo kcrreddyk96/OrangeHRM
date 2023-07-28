@@ -114,9 +114,22 @@ public class YAMLtoHashMapConverter extends Browser {
     }
 
     @DataProvider
-    public static Object[][] adminAddWorkshift() {
-        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminAddWorkshift");
+    public static Object[][] setOperationsOnNationalities() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "setOperationsOnNationalities");
     }
 
+    @DataProvider
+    public static Object[][] addNewNationalitiesRecord() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "addNewNationalitiesRecord");
+    }
 
+    @DataProvider
+    public static Object[][] addCorporateBranding() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "addCorporateBranding");
+    }
+
+    @DataProvider
+    public static Object[][] Configuration() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "Configuration");
+    }
 }
