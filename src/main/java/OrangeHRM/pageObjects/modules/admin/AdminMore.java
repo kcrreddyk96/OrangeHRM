@@ -12,6 +12,9 @@ import java.util.List;
 
 public class AdminMore extends GlobalPageObjects {
     WebDriver driver;
+    String SuccessMessage = "Success\n" +
+            "Successfully Deleted\n" +
+            "×";
 
     public AdminMore(WebDriver driver) {
         super(driver);
@@ -68,12 +71,24 @@ public class AdminMore extends GlobalPageObjects {
     @FindBy(css = ".oxd-switch-input--active")
     private WebElement checkbox;
 
+    @FindBy(xpath = "//button[normalize-space()='Yes, Delete']")
+    private WebElement recorddeleteconfirm;
+
+    @FindBy(xpath = "//button[normalize-space()='No, Cancel']")
+    private WebElement recorddeletecancel;
+
+    @FindBy(css = "#oxd-toaster_1")
+    private WebElement operationsuccessmessage;
+
     //TODO - Admin More  Nationalities Page Object Elements
     @FindBy(css = ".oxd-table-row--with-border")
     private List<WebElement> nationalitiesrecords;
 
     @FindBy(xpath = "//div[@class='oxd-input-group oxd-input-field-bottom-space']/div[2]/input")
     private WebElement nationalityname;
+
+    @FindBy(xpath = "//span[normalize-space()='Already exists']")
+    private WebElement alreadyexist;
 
     //TODO - Admin More  Corporate Branding Page Object Elements
     @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
@@ -215,11 +230,11 @@ public class AdminMore extends GlobalPageObjects {
     }
 
     public void setOperationsOnNationalities(String NameOfTheNation, String NationRecordOperation) throws InterruptedException {
-        more.click();
+        //more.click();
         nationalities.click();
         Waits.shortPause();
         WebElement NationRecords = nationalitiesRecordsSearch(NameOfTheNation);
-
+        System.out.println(NationRecords.getText());
         if (NationRecordOperation.equalsIgnoreCase("Delete")) {
             NationRecords.findElement(deleted).click();
         } else if (NationRecordOperation.equalsIgnoreCase("Edit")) {
@@ -228,17 +243,40 @@ public class AdminMore extends GlobalPageObjects {
             System.out.println("Entered Value is not match in the Nationalities Records Operation");
             Assert.fail("Entered Value is not match in the Nationalities Records Operation");
         }
+        Waits.shortPause();
+        recorddeleteconfirm.click();
+        Waits.shortPause();
+        System.out.println(operationsuccessmessage.getText());
+        Assert.assertEquals(operationsuccessmessage.getText(), SuccessMessage);
     }
 
     //TODO - Admin Adding Nationalities Records Method
-    public void addNewNationalitiesRecord(String NationalName) throws InterruptedException {
-        more.click();
+    public void addNewNationalitiesRecord(String NameOfTheNation) throws InterruptedException {
         nationalities.click();
         Waits.shortPause();
         add.click();
         Waits.shortPause();
-        nationalityname.sendKeys(NationalName);
+        nationalityname.sendKeys(NameOfTheNation);
         save.click();
+        Waits.shortPause();
+
+        if (alreadyexist.isDisplayed()){
+            setOperationsOnNationalities(NameOfTheNation,"Delete");
+            Waits.pause();
+            driver.getCurrentUrl();
+            Waits.shortPause();
+            nationalities.click();
+            Waits.shortPause();
+            add.click();
+            Waits.shortPause();
+            nationalityname.sendKeys(NameOfTheNation);
+            Waits.shortPause();
+            save.click();
+            System.out.println(operationsuccessmessage.getText());
+        } else {
+            System.out.println(operationsuccessmessage.getText());
+            Assert.assertEquals(operationsuccessmessage.getText(), SuccessMessage);
+        }
     }
 
     //TODO - Admin Changing Corporate Branding Records Method
@@ -269,7 +307,7 @@ public class AdminMore extends GlobalPageObjects {
         Uses AutoIT Here
          */
 
-        if (DisplaySocialMediaYesNo.equalsIgnoreCase("Yes")){
+        if (DisplaySocialMediaYesNo.equalsIgnoreCase("Yes")) {
             System.out.println(socialmediaimages.isSelected());
         } else if (DisplaySocialMediaYesNo.equalsIgnoreCase("No")) {
             socialmediaimages.click();

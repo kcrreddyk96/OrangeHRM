@@ -150,12 +150,12 @@ setOperationsOnMemberships:
 # Admin Nationalities Module Pages
 # Admin Searching Nationalities Records Method
 setOperationsOnNationalities:
-  NameOfTheNation:
-  NationRecordOperation:
+  NameOfTheNation: Armenian
+  NationRecordOperation: Delete
 
 # Admin Adding Nationalities Records Method
 addNewNationalitiesRecord:
-  NationalName:
+  NameOfTheNation: Armenian
 # ****************************** Page Brake ************************************** #
 
 # Admin Corporate Branding Module Pages
