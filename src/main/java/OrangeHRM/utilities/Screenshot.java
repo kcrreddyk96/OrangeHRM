@@ -12,8 +12,8 @@ public class Screenshot {
     public static String getScreenshot(String testCaseName, WebDriver driver) throws IOException {
         TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
         File fileSource = takesScreenshot.getScreenshotAs(OutputType.FILE);
-        File fileLocation = new File(System.getProperty("user.dir") + "//screenshots//" + testCaseName + ".png");
+        File fileLocation = new File(System.getProperty("user.dir") + "//testScreenshots//" + testCaseName + ".png");
         FileUtils.copyFile(fileSource,fileLocation);
-        return System.getProperty("user.dir") + "//screenshots//" + testCaseName + ".png";
+        return System.getProperty("user.dir") + "//testScreenshots//" + testCaseName + ".png";
     }
 }

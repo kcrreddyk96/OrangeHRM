@@ -2,19 +2,13 @@ package OrangeHRM.testCases.globalTestCases;
 
 import OrangeHRM.pageObjects.global.LoginPage;
 import OrangeHRM.utilities.Browser;
-import OrangeHRM.utilities.HashMapConverter;
+import OrangeHRM.utilities.Converters.JSONtoHashMap;
 import OrangeHRM.utilities.Waits;
-import org.testng.Assert;
 import org.testng.annotations.*;
 
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 
 public class MultipleLoginValidationTest extends Browser {
-    List<HashMap<String, String>> getData;
-    HashMapConverter hashmap = new HashMapConverter();
-
     @BeforeMethod(alwaysRun = true)
     public void setLaunchBrowser() {
         driver = initializeTheBrowser();
@@ -22,12 +16,13 @@ public class MultipleLoginValidationTest extends Browser {
         loginPage.getURL(pageURL);
     }
 
-    @Test(description = "Multiple Login Validations Test", dataProvider = "setDataProvider")
-    public void LoginWithValidCreditionals(HashMap<String, String> input) throws InterruptedException {
+    @Test(description = "Login Validation Test", priority = 0, groups = {"Regression", "Login Validation"},
+            dataProviderClass = JSONtoHashMap.class, dataProvider = "MultipleLoginLogoutValidationTest")
+    public void MultipleLoginLogoutValidationTest(HashMap<String, String> hashMap) throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.setLogin(input.get("userName"), input.get("userPassword"));
+        loginPage.setLogin(hashMap.get("userName"), hashMap.get("userPassword"));
         Waits.shortPause();
-        loginPage.profiledropdown("logout");
+        loginPage.profiledropdown(hashMap.get("ProfileDropdown"));
     }
 
     @AfterMethod
@@ -35,9 +30,4 @@ public class MultipleLoginValidationTest extends Browser {
         driver.close();
     }
 
-    @DataProvider
-    public Object[][] setDataProvider() throws IOException {
-        getData = hashmap.getJsonDataToHashMap(System.getProperty("user.dir") + "//src//test//java//OrangeHRM//testData//dataSets.json");
-        return new Object[][]{{getData.get(0)}, {getData.get(2)}};
-    }
 }
