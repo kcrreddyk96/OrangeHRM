@@ -1,28 +1,30 @@
-# Admin User Management Module Page
-# Admin Searching Employee
-searchByUserName:
+# ************* Admin User Management Module Page ************* #
+# Admin Search By UserName
+adminSearchByUserName:
   SearchUserName: Paul
 
-searchByUserRole:
+# Admin Search By UserRole
+adminSearchByUserRole:
   UserRole: Admin
 
-searchByEmpName:
+# Admin Search By EmpName
+adminSearchByEmpName:
   EMPName: 'Paul  Collings'
 
-searchByStatus:
+# Admin Search By Status
+adminSearchByStatus:
   SearchStatus: Enabled
 
-# Admin Adding new Admin User
-addAdminUser:
+# Admin Adding new User as Admin
+adminAddAdminUser:
   SelectRole: Admin
   EmpName: Paul
   SelectStatus: Enabled
   UserName: admin
   UserPassword: 'admin123'
   ConfirmPassword: 'admin123'
-# ****************************** Page Brake ************************************** #
 
-# Admin Job Module Page
+  # ************* Job Module Page ************* #
 # Admin Adding new Job Titles
 adminAddJobTitles:
   JobTitle: Software Quality Test Engineer
@@ -33,19 +35,23 @@ adminAddJobTitles:
     Experience with building an automation framework from scratch,
     Ability to thrive in a fast paced start-up environment.
 
+# Admin Adding Pay Grades
 adminAddPayGrades:
   PayGradeName: Salary
   CurrentCodeINR: INR
   MinPay: '2500'
   MaxPay: '5000'
 
+# Admin Adding New Employment Status
 adminAddingNewEmploymentStatus:
   EmploymentName: Long Term Role
 
+# Admin Adding New Job Categories
 adminAddJobCategories:
   JobCategorieName: IT
 
-adminAddWorkshift:
+# Admin Adding New Work Shift
+adminAddWorkShift:
   ShiftName: Day Shift
   FromStartHour: '10'
   FromStartMin: '00'
@@ -54,14 +60,9 @@ adminAddWorkshift:
   ToEndMin: '30'
   ToAMPM: PM
 
-# Admin Qualifications Add New Membership Record Page Method
-addNewMembershipRecord:
-  NameOfMembership:
-# ****************************** Page Brake ************************************** #
-
-# Admin Organization Module Pages
-# Admin Organization -> Admin Access And Edit General Information
-accessAndEditGeneralInformation:
+  # ************* Admin Organization Page ************* #
+# Admin Access And Edit General Information
+adminEditingGeneralInformationVerification:
   GeneralORGName: 'ORANGE HRM'
   GeneralRegistrationNumber: 'ORG125IND0005'
   GeneralTaxID: 'ORG0005'
@@ -75,92 +76,78 @@ accessAndEditGeneralInformation:
   SelectedCountry: USA
   GeneralNotes: 'Orange HRM is CRM Tool, OrangeHRM provides a scalable HRM solution for small and midsize businesses.'
 
-searchLocations:
-  LocationName: 'New Jersey'
-  SelectedCountry: USA
-
-addLocation:
-  Name: 'Earthling Plaza'
-  City: 'New York'
-  Province: 'New York'
-  SelectedCountry: USA
-  Phone: '914-458-0055'
-  Fax: '510036'
-  sendAddress: 'Earthing street,Suite 12G New York, New York 10036 USA.'
-  LocationNotes: 'New Company Location'
-
-searchORGStructure:
+# Admin Searching Dept in Org Structure
+adminSearchORGStructure:
   DeptName: IT
 
-changeOrganizationStructure:
+# Admin Changing Org Structure
+adminChangeOrganizationStructure:
   DeptName: Engineering
   UnitOperation: Delete
 
-addOrganizationUnit:
+# Admin Adding new Org Unit
+adminAddOrganizationUnit:
   UnitID: '005'
   UnitName: 'Engineering to Improve'
   UnitDesc: Engineering is the practice of using natural science, mathematics, and the scientific method to solve problems,
     Increase efficiency and productivity, and improve systems.
-# ****************************** Page Brake ************************************** #
 
-# Admin Qualifications Module Pages
+  # ************* Admin Qualifications Page ************* #
 # Admin Qualifications Skills Page
-setOperationsOnSkill:
+adminSetOperationsOnSkill:
   SkillName:
   SkillRecordOperation:
 
 # Admin Qualifications Add New Skills Record Page Method
-addNewSkillsRecord:
+adminAddNewSkillsRecord:
   SkillName:
   SkillDesc:
 
 # Admin Qualifications Searching Education Degree Record Page Method
-setOperationsOnEducation:
+adminSetOperationsOnEducation:
   Degree:
   EducationRecordOperation:
 
 # Admin Qualifications Add New Education Degree Record Page Method
-addNewEductationRecord:
+adminAddNewEductationRecord:
   EduDegreeName:
 
 # Admin Qualifications License Record Page Method
-setOperationsOnLicenses:
+adminSetOperationsOnLicenses:
   LicenseName:
   LicenseRecordOperation:
 
 # Admin Qualifications Add New License Record Page Method
-addNewLicenseRecord:
+adminAddNewLicenseRecord:
   LicensedName:
 
 # Admin Qualifications Language Record Page Method
-setOperationsOnLanguages:
+adminSetOperationsOnLanguages:
   LanguageName:
   LanguageRecordOperation:
 
 # Admin Qualifications Add New Language Record Page Method
-addNewLanguageRecord:
+adminAddNewLanguageRecord:
   AddLanguageName:
 
 # Admin Qualifications Membership Record Page Method
-setOperationsOnMemberships:
+adminSetOperationsOnMemberships:
   MembershipName:
   MembershipDetails:
-# ****************************** Page Brake ************************************** #
 
-# Admin Nationalities Module Pages
+  # ************* Admin Nationalities Page ************* #
 # Admin Searching Nationalities Records Method
-setOperationsOnNationalities:
+adminSearchNationalitiesRecords:
   NameOfTheNation: Armenian
   NationRecordOperation: Delete
 
 # Admin Adding Nationalities Records Method
-addNewNationalitiesRecord:
+adminAddingNewNationalitiesRecord:
   NameOfTheNation: Armenian
-# ****************************** Page Brake ************************************** #
 
-# Admin Corporate Branding Module Pages
+  # ************* Admin Corporate Branding Page ************* #
 # Admin Changing Corporate Branding Records Method
-addCorporateBranding:
+adminAddCorporateBranding:
   PrimaryColorCode:
   SecondaryColorCode:
   PrimaryFontColorCode:
@@ -168,10 +155,14 @@ addCorporateBranding:
   GradientColorCode1:
   GradientColorCode2:
   DisplaySocialMediaYesNo:
-# ****************************** Page Brake ************************************** #
 
-# Admin Configuration Module Pages
+  # ************* Admin Configuration Page ************* #
+  # Admin Configuration Module Pages
 
 
 
-# ****************************** Page Brake ************************************** #
+
+
+
+  # ************* Next Page  Page ************* #
+# Next Page Method

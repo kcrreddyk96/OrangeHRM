@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite thread-count="3" name="OrangeHRM Automation Test" parallel="tests">
+    <listeners>
+        <listener class-name="OrangeHRM.testComponents.Listeners"/>
+    </listeners>
+
+    <test name="Admin Page Test Cases">
+        <classes>
+            <class name="OrangeHRM.testCases.adminModule.AdminPageTestCases">
+            </class>
+        </classes>
+    </test>
+
+</suite>

@@ -1,15 +1,26 @@
-[
-  {
-    "userName" : "Admin",
-    "userPassword" : "admin123"
-  },
-
-  {
-    "userName" : "admin",
-    "userPassword" : "admin123"
-  },
-  {
-    "userName" : "admin",
-    "userPassword" : "admin12345"
-  }
-]
+{
+  "dataSet1": [
+    {
+      "userName": "Admin",
+      "userPassword": "admin123",
+      "ProfileDropdown": "logout"
+    }
+  ],
+  "dataSet2": [
+    {
+      "userName": "Admin",
+      "userPassword": "admin123",
+      "ProfileDropdown": "logout"
+    },
+    {
+      "userName": "Admin",
+      "userPassword": "admin123",
+      "ProfileDropdown": "logout"
+    },
+    {
+      "userName": "Admin",
+      "userPassword": "admin123",
+      "ProfileDropdown": "new"
+    }
+  ]
+}

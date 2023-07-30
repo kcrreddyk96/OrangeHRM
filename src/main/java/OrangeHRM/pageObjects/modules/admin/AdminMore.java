@@ -12,8 +12,12 @@ import java.util.List;
 
 public class AdminMore extends GlobalPageObjects {
     WebDriver driver;
-    String SuccessMessage = "Success\n" +
+    String SuccessDeleteMessage = "Success\n" +
             "Successfully Deleted\n" +
+            "×";
+
+    String SuccessSavedMessage = "Success\n" +
+            "Successfully Saved\n" +
             "×";
 
     public AdminMore(WebDriver driver) {
@@ -247,7 +251,7 @@ public class AdminMore extends GlobalPageObjects {
         recorddeleteconfirm.click();
         Waits.shortPause();
         System.out.println(operationsuccessmessage.getText());
-        Assert.assertEquals(operationsuccessmessage.getText(), SuccessMessage);
+        Assert.assertEquals(operationsuccessmessage.getText(), SuccessDeleteMessage);
     }
 
     //TODO - Admin Adding Nationalities Records Method
@@ -259,23 +263,27 @@ public class AdminMore extends GlobalPageObjects {
         nationalityname.sendKeys(NameOfTheNation);
         save.click();
         Waits.shortPause();
+        waitforElementtoAppear(alreadyexist);
 
-        if (alreadyexist.isDisplayed()){
-            setOperationsOnNationalities(NameOfTheNation,"Delete");
+        if (alreadyexist.isDisplayed()) {
+            setOperationsOnNationalities(NameOfTheNation, "Delete");
             Waits.pause();
             driver.getCurrentUrl();
             Waits.shortPause();
             nationalities.click();
             Waits.shortPause();
+            driver.navigate().refresh();
             add.click();
             Waits.shortPause();
             nationalityname.sendKeys(NameOfTheNation);
             Waits.shortPause();
             save.click();
+            waitforElementtoAppear(operationsuccessmessage);
             System.out.println(operationsuccessmessage.getText());
+            Assert.assertEquals(operationsuccessmessage.getText(), SuccessSavedMessage);
         } else {
             System.out.println(operationsuccessmessage.getText());
-            Assert.assertEquals(operationsuccessmessage.getText(), SuccessMessage);
+            Assert.assertEquals(operationsuccessmessage.getText(), SuccessDeleteMessage);
         }
     }
 
@@ -312,7 +320,6 @@ public class AdminMore extends GlobalPageObjects {
         } else if (DisplaySocialMediaYesNo.equalsIgnoreCase("No")) {
             socialmediaimages.click();
         }
-
     }
 
 
