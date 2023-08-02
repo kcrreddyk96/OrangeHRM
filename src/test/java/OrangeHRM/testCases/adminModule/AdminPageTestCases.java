@@ -42,25 +42,25 @@ public class AdminPageTestCases extends Browser {
 
     @Test(description = "Admin searching by employer name of employer", priority = 2, groups = {"Regression", "Admin", "Admin User"},
             dataProviderClass = YAMLtoHashMap.class, dataProvider = "adminSearchByEmpName")
-    public void adminSearchByEmpName() throws InterruptedException {
+    public void adminSearchByEmpName(HashMap<String, String> hashMap) throws InterruptedException {
         DashboardPage dashboardpage = new DashboardPage(driver);
         Waits.pause();
         dashboardpage.adminModule();
         Waits.pause();
         AdminUserManagement adminpage = new AdminUserManagement(driver);
-        adminpage.searchByEmpName("Paul  Collings");
+        adminpage.searchByEmpName(hashMap.get("EMPName"));
     }
 
     @Test(description = "Admin searching by Status of user", priority = 3, groups = {"Regression", "Admin", "Admin User"},
             dataProviderClass = YAMLtoHashMap.class, dataProvider = "adminSearchByStatus")
-    public void adminSearchByStatus() throws InterruptedException {
+    public void adminSearchByStatus(HashMap<String, String> hashMap) throws InterruptedException {
         DashboardPage dashboardpage = new DashboardPage(driver);
         Waits.pause();
         dashboardpage.adminModule();
         Waits.pause();
         //TODO - Search using Status
         AdminUserManagement adminpage = new AdminUserManagement(driver);
-        adminpage.searchByStatus("Enabled");
+        adminpage.searchByStatus(hashMap.get("SearchStatus"));
     }
 
     @Test(description = "Admin adding user as admin", priority = 4, groups = {"Regression", "Admin", "Admin User"},

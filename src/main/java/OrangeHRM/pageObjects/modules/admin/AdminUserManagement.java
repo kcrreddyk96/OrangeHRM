@@ -9,6 +9,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import java.util.List;
+
 public class AdminUserManagement extends GlobalPageObjects {
     WebDriver driver;
 
@@ -67,6 +69,9 @@ public class AdminUserManagement extends GlobalPageObjects {
     @FindBy(css = ".orangehrm-left-space")
     private WebElement save;
 
+    @FindBy(css = ".oxd-table-row--with-border")
+    private List<WebElement> empsrecords;
+
     //TODO - Admin Searching Admin User PageObjects
     @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
     private WebElement searchusername;
@@ -103,6 +108,12 @@ public class AdminUserManagement extends GlobalPageObjects {
 
     @FindBy(css = ".oxd-toast-container--bottom")
     private WebElement norecordfound;
+
+    private WebElement empRecordsSearch(String SearchUserName) {
+        WebElement emprecordresult = empsrecords.stream().filter(empr -> empr.getText().equalsIgnoreCase("SearchUserName")).findFirst().orElse(null);
+        System.out.println(emprecordresult);
+        return emprecordresult;
+    }
 
     //TODO - Admin Adding new Admin User
     public void addAdminUser(String SelectRole, String EmpName, String SelectStatus, String UserName, String UserPassword, String ConfirmPassword) throws InterruptedException {
@@ -161,6 +172,8 @@ public class AdminUserManagement extends GlobalPageObjects {
         searchusername.sendKeys(SearchUserName);
         search.click();
         Waits.pause();
+        String searchemp = empRecordsSearch(SearchUserName).toString();
+        System.out.println(searchemp);
     }
 
     //TODO - Admin Searching Employee By UserRole
