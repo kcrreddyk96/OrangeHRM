@@ -85,6 +85,11 @@ public class YAMLtoHashMap extends Browser {
     }
 
     @DataProvider
+    public static Object[][] adminAddWorkShift() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminAddWorkShift");
+    }
+
+    @DataProvider
     public static Object[][] adminEditingGeneralInformationVerification() {
         return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminEditingGeneralInformationVerification");
     }

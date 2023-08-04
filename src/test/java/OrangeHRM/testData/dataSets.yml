@@ -1,7 +1,7 @@
 # ************* Admin User Management Module Page ************* #
 # Admin Search By UserName
 adminSearchByUserName:
-  SearchUserName: admin
+  SearchUserName: Admin
 
 # Admin Search By UserRole
 adminSearchByUserRole:
@@ -9,7 +9,7 @@ adminSearchByUserRole:
 
 # Admin Search By EmpName
 adminSearchByEmpName:
-  EMPName: Pa
+  EMPName: 'Peter Mac Anderson'
 
 # Admin Search By Status
 adminSearchByStatus:
@@ -18,9 +18,9 @@ adminSearchByStatus:
 # Admin Adding new User as Admin
 adminAddAdminUser:
   SelectRole: Admin
-  EmpName: Pa
+  EmpName: ad
   SelectStatus: Enabled
-  UserName: akane
+  UserName: akane1
   UserPassword: 'admin123'
   ConfirmPassword: 'admin123'
 
