@@ -2,11 +2,13 @@ package OrangeHRM.pageObjects.modules.admin;
 
 import OrangeHRM.pageObjects.global.GlobalPageObjects;
 import OrangeHRM.utilities.Waits;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 
 import java.util.List;
@@ -19,6 +21,14 @@ public class AdminUserManagement extends GlobalPageObjects {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+    String errorMessage = "Info\n" +
+            "No Records Found\n" +
+            "×";
+
+    String SuccessSavedMessage = "Success\n" +
+            "Successfully Saved\n" +
+            "×";
 
     //TODO - Admin Adding new Admin User PageObjects
     @FindBy(xpath = "//div[@class='orangehrm-header-container']/button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
@@ -60,7 +70,7 @@ public class AdminUserManagement extends GlobalPageObjects {
     @FindBy(xpath = "(//div[@class='oxd-form-row user-password-row']//input[@class='oxd-input oxd-input--active'])[1]")
     private WebElement password;
 
-    @FindBy(xpath = "(//div[@class='oxd-form-row user-password-row']//input[@class='oxd-input oxd-input--active'])[2]")
+    @FindBy(xpath = "//div/label[normalize-space()='Confirm Password']/parent::div/parent::div/div[2]/input")
     private WebElement confirmpassword;
 
     @FindBy(css = ".oxd-button--ghost")
@@ -69,11 +79,17 @@ public class AdminUserManagement extends GlobalPageObjects {
     @FindBy(css = ".orangehrm-left-space")
     private WebElement save;
 
-    @FindBy(css = ".oxd-table-row--with-border")
-    private List<WebElement> empsrecords;
+    @FindBy(css = ".oxd-toast-container--toast")
+    private WebElement messagecontainer;
+
+    @FindBy(css = ".oxd-table-card")
+    private WebElement tablelistData;
+
+    @FindBy(xpath = "(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[1]")
+    private WebElement deleted;
 
     //TODO - Admin Searching Admin User PageObjects
-    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
+    @FindBy(xpath = "//div[@class='oxd-input-group oxd-input-field-bottom-space']/div/input[@class='oxd-input oxd-input--active']")
     private WebElement searchusername;
 
     @FindBy(xpath = "(//i[@class='oxd-icon bi-caret-down-fill oxd-select-text--arrow'])[1]")
@@ -106,17 +122,26 @@ public class AdminUserManagement extends GlobalPageObjects {
     @FindBy(xpath = ".oxd-button--ghost")
     private WebElement reset;
 
-    @FindBy(css = ".oxd-toast-container--bottom")
-    private WebElement norecordfound;
+    @FindBy(xpath = "//*[normalize-space()='Already exists']")
+    private WebElement alreadyexist;
 
-    private WebElement empRecordsSearch(String SearchUserName) {
-        WebElement emprecordresult = empsrecords.stream().filter(empr -> empr.getText().equalsIgnoreCase("SearchUserName")).findFirst().orElse(null);
-        System.out.println(emprecordresult);
-        return emprecordresult;
-    }
+    @FindBy(css = ".oxd-topbar-header-title")
+    private WebElement adduserheading;
+
+    @FindBy(css = ".oxd-button--label-danger")
+    private WebElement delete;
 
     //TODO - Admin Adding new Admin User
-    public void addAdminUser(String SelectRole, String EmpName, String SelectStatus, String UserName, String UserPassword, String ConfirmPassword) throws InterruptedException {
+    private void deleteExistinguser(String UserName) throws InterruptedException {
+        adminModule();
+        searchByUserName(UserName);
+        Waits.shortPause();
+        waitforElementtoAppear(deleted);
+        deleted.click();
+        delete.click();
+    }
+
+    public void addnewAdminUser(String SelectRole, String EmpName, String SelectStatus, String UserName, String UserPassword, String ConfirmPassword) throws InterruptedException {
         adduser.click();
         Waits.pause();
         userrole.click();
@@ -167,19 +192,47 @@ public class AdminUserManagement extends GlobalPageObjects {
         save.click();
     }
 
+    public void addAdminUser(String SelectRole, String EmpName, String SelectStatus, String UserName, String UserPassword, String ConfirmPassword) throws InterruptedException {
+        addnewAdminUser(SelectRole, EmpName, SelectStatus, UserName, UserPassword, ConfirmPassword);
+        Waits.longPause();
+        String adduser = adduserheading.getText();
+        System.out.println(adduser);
+        if (adduser.equalsIgnoreCase("Admin\n" + "User Management")) {
+            System.out.println("User Added Successfully");
+        } else if (adduser.equalsIgnoreCase("Admin")) {
+            String errormsg = alreadyexist.getText();
+            System.out.println(errormsg);
+            Waits.shortPause();
+            deleteExistinguser(UserName);
+            Waits.shortPause();
+            addnewAdminUser(SelectRole, EmpName, SelectStatus, UserName, UserPassword, ConfirmPassword);
+            waitforElementtoAppear(messagecontainer);
+            String errormeassage = messagecontainer.getText();
+            System.out.println(errormeassage);
+            Assert.assertEquals(errormeassage, SuccessSavedMessage);
+            Assert.assertEquals(errormsg, "Already exists");
+        }
+    }
+
     //TODO - Admin Searching Employee By UserName
-    public void searchByUserName(String SearchUserName) throws InterruptedException {
+    public void searchByUserName(String SearchUserName) {
         searchusername.sendKeys(SearchUserName);
         search.click();
-        Waits.pause();
-        String searchemp = empRecordsSearch(SearchUserName).toString();
-        System.out.println(searchemp);
+
+        if (tablelistData.isDisplayed()) {
+            System.out.println("Records are Displayed");
+        } else {
+            String errormeassage = messagecontainer.getText();
+            System.out.println(errormeassage);
+            Assert.assertEquals(errormeassage, errorMessage);
+            Assert.fail("Searching employee name is not available in the records");
+        }
+
     }
 
     //TODO - Admin Searching Employee By UserRole
     public void searchByUserRole(String UserRole) throws InterruptedException {
         searchuserrole.click();
-        Waits.shortPause();
         if (UserRole.equalsIgnoreCase("Admin")) {
             searchuseradmin.click();
         } else if (UserRole.equalsIgnoreCase("ESS")) {
@@ -190,6 +243,16 @@ public class AdminUserManagement extends GlobalPageObjects {
         }
         search.click();
         Waits.shortPause();
+
+        if (tablelistData.isDisplayed()) {
+            System.out.println("Records are Displayed");
+            Waits.shortPause();
+        } else {
+            String errormeassage = messagecontainer.getText();
+            System.out.println(errormeassage);
+            Assert.assertEquals(errormeassage, errorMessage);
+            Assert.fail("Searching employee name is not available in the records");
+        }
     }
 
     //TODO - Admin Searching Employee By Name
@@ -197,11 +260,23 @@ public class AdminUserManagement extends GlobalPageObjects {
         Actions searchempnam = new Actions(driver);
         if (EMPName.equalsIgnoreCase(EMPName)) {
             searchempnam.sendKeys(searchempname, EMPName).build().perform();
-            Waits.shortPause();
+            Waits.pause();
+            System.out.println(empResult.getText());
+            boolean ename = empResult.getText().equalsIgnoreCase(EMPName);
             empResult.click();
+            Assert.assertTrue(ename, "Searching employee name is not available in the records");
         } else {
             System.out.println("Dropdown value is not correct to Search EMPName");
             Assert.fail("Incorrect Dropdown value to Search EMPName");
+        }
+        if (tablelistData.isDisplayed()) {
+            System.out.println("Records are Displayed");
+            Waits.shortPause();
+        } else {
+            String errormeassage = messagecontainer.getText();
+            System.out.println(errormeassage);
+            Assert.assertEquals(errormeassage, errorMessage);
+            Assert.fail("Searching employee name is not available in the records");
         }
     }
 
@@ -218,6 +293,15 @@ public class AdminUserManagement extends GlobalPageObjects {
             Assert.fail("Incorrect Dropdown value to Search Status");
         }
         search.click();
+        if (tablelistData.isDisplayed()) {
+            System.out.println("Records are Displayed");
+            Waits.shortPause();
+        } else {
+            String errormeassage = messagecontainer.getText();
+            System.out.println(errormeassage);
+            Assert.assertEquals(errormeassage, errorMessage);
+            Assert.fail("Searching employee name is not available in the records");
+        }
     }
 }
 
