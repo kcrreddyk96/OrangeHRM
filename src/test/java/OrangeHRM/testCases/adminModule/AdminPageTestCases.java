@@ -181,9 +181,17 @@ public class AdminPageTestCases extends Browser {
 
     //TODO *********************** Admin Corporate Branding Page Test ********************************** \\
 
-
     //TODO *********************** Admin Corporate Branding Page Test ********************************** \\
-
+    @Test
+    public void test() throws InterruptedException {
+        //TODO - Adding Admin Jobs Section
+        DashboardPage dashboardpage = new DashboardPage(driver);
+        Waits.pause();
+        dashboardpage.adminModule();
+        Waits.pause();
+        AdminMore adminmore = new AdminMore(driver);
+        adminmore.moduleconfiguration("Leave","Hide");
+    }
 
     //TODO *********************** Admin Configuration Page Test ********************************** \\
 
