@@ -2,7 +2,6 @@ package OrangeHRM.pageObjects.modules.admin;
 
 import OrangeHRM.pageObjects.global.GlobalPageObjects;
 import OrangeHRM.utilities.Waits;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -112,21 +111,18 @@ public class AdminJob extends GlobalPageObjects {
     @FindBy(xpath = "//input[@name='pm']")
     private WebElement timepm;
 
+    @FindBy(css = ".oxd-padding-cell")
+    private List<WebElement> recordsData;
+
 
     //TODO - Admin Adding new Job Titles
     public void adminAddJobTitles(String JobTitle, String JobDesc, String JobNotes) throws InterruptedException {
         job.click();
-        Waits.shortPause();
         jobtitles.click();
-        Waits.shortPause();
         addItems.click();
-        Waits.shortPause();
         jobtitle.sendKeys(JobTitle);
-        Waits.shortPause();
         jobdescription.sendKeys(JobDesc);
-        Waits.shortPause();
         jobnote.sendKeys(JobNotes);
-        Waits.shortPause();
         savesall.click();
         Waits.shortPause();
         adminModule();
@@ -135,22 +131,17 @@ public class AdminJob extends GlobalPageObjects {
     //TODO - Admin Adding new Pay Grades
     public void adminAddPayGrades(String PayGradeName, String CurrentCodeINR, String MinPay, String MaxPay) throws InterruptedException {
         job.click();
-        Waits.shortPause();
         paygrades.click();
-        Waits.shortPause();
         addpayc.click();
-        Waits.shortPause();
         addpaygradename.sendKeys(PayGradeName);
-        Waits.shortPause();
         savesall.click();
-
         //TODO - Admin Adding new New Currency
-
         addpayc.click();
         Waits.shortPause();
         currencycode.click();
         Waits.shortPause();
-        selectCurrency(CurrentCodeINR);
+        WebElement currency = Search(countCurrency,CurrentCodeINR);
+        currency.click();
         Waits.shortPause();
         minpay.sendKeys(MinPay);
         maxpay.sendKeys(MaxPay);
@@ -162,15 +153,6 @@ public class AdminJob extends GlobalPageObjects {
         paygrades.click();
         Waits.shortPause();
         adminModule();
-    }
-
-    //TODO - Currency Selection
-    private void selectCurrency(String CurrentCodeINR) throws InterruptedException {
-        //countCurrency.forEach(curr->System.out.println(curr.getText()));
-        WebElement currency = countCurrency.stream().filter(curr ->
-                curr.getText().contains(CurrentCodeINR)).findFirst().orElse(null);
-        System.out.println(currency);
-        currency.click();
     }
 
     //TODO - Admin Adding New Employment Status
@@ -199,31 +181,27 @@ public class AdminJob extends GlobalPageObjects {
         jobcategoriename.sendKeys(JobCategorieName);
         Waits.shortPause();
         savesall.click();
-        Waits.shortPause();
+        Waits.pause();
+        WebElement records = Search(recordsData, JobCategorieName);
+        String recordname = records.getText();
+        System.out.println(recordname);
+        Assert.assertEquals(recordname, JobCategorieName);
         adminModule();
     }
 
     //TODO - Admin Adding New Job Categories
     public void adminAddWorkshift(String ShiftName, String FromStartHour, String FromStartMin, String FromAMPM, String ToEndHour, String ToEndMin, String ToAMPM) throws InterruptedException {
         job.click();
-        Waits.shortPause();
         workshifts.click();
-        Waits.shortPause();
         addItems.click();
-        Waits.shortPause();
         shiftname.sendKeys(ShiftName);
-        Waits.shortPause();
-
         fromtime.click();
-        Waits.shortPause();
         timehours.sendKeys(Keys.CONTROL, "a", Keys.DELETE);
         Waits.shortPause();
         timehours.sendKeys(FromStartHour);
         Waits.shortPause();
         timeminute.sendKeys(Keys.CONTROL, "a", Keys.DELETE);
-        Waits.shortPause();
         timeminute.sendKeys(FromStartMin);
-        Waits.shortPause();
         if (FromAMPM.equalsIgnoreCase("AM")) {
             timeam.click();
         } else if (FromAMPM.equalsIgnoreCase("PM")) {
@@ -232,17 +210,11 @@ public class AdminJob extends GlobalPageObjects {
             System.out.println("Entered Value is not match with AM or PM");
             Assert.fail("Entered Value is not match with AM or PM");
         }
-        Waits.pause();
         totime.click();
-        Waits.shortPause();
         timehours.sendKeys(Keys.CONTROL, "a", Keys.DELETE);
-        Waits.shortPause();
         timehours.sendKeys(ToEndHour);
-        Waits.shortPause();
         timeminute.sendKeys(Keys.CONTROL, "a", Keys.DELETE);
-        Waits.shortPause();
         timeminute.sendKeys(ToEndMin);
-        Waits.shortPause();
         if (ToAMPM.equalsIgnoreCase("AM")) {
             timeam.click();
         } else if (ToAMPM.equalsIgnoreCase("PM")) {
@@ -251,9 +223,16 @@ public class AdminJob extends GlobalPageObjects {
             System.out.println("Entered Value is not match with AM or PM");
             Assert.fail("Entered Value is not match with AM or PM");
         }
-        Waits.shortPause();
         savesall.click();
-        Waits.shortPause();
         adminModule();
+    }
+
+    //public void AddWorkshift(String ShiftName, String FromStartHour, String FromStartMin, String FromAMPM, String ToEndHour, String ToEndMin, String ToAMPM) throws InterruptedException {
+    //adminAddWorkshift(ShiftName, FromStartHour, FromStartMin, FromAMPM, ToEndHour, ToEndMin, ToAMPM);
+    public void AddWorkshift() throws InterruptedException {
+        job.click();
+        workshifts.click();
+        WebElement records = Search(recordsData, "Twilight");
+        System.out.println(records.getText());
     }
 }

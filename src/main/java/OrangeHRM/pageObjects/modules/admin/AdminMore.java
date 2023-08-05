@@ -38,7 +38,7 @@ public class AdminMore extends GlobalPageObjects {
     @FindBy(xpath = "//a[normalize-space()='Corporate Branding']")
     private WebElement corporatebranding;
 
-    @FindBy(xpath = "//a[normalize-space()='Configuration']")
+    @FindBy(xpath = "//span[normalize-space()='Configuration']")
     private WebElement configuration;
 
     //TODO - Admin More Configuration Sub Modules Page Object Elements
@@ -171,7 +171,7 @@ public class AdminMore extends GlobalPageObjects {
     @FindBy(xpath = "//div[@class='oxd-select-option' and @role='option']")
     private List<WebElement> languagerecords;
 
-    @FindBy(xpath = "(//div[@class='oxd-select-text--after'])[2]")
+    @FindBy(xpath = "(//label[normalize-space()='Date Format']/parent::div/parent::div/div[2]/div/div/div[2]")
     private WebElement dateformat;
 
     @FindBy(xpath = "//div[@class='oxd-select-option' and @role='option']")
@@ -181,7 +181,7 @@ public class AdminMore extends GlobalPageObjects {
     @FindBy(css = ".oxd-table-row--with-border")
     private List<WebElement> languagepackagesrecords;
 
-    @FindBy(xpath = "//i[@class='oxd-icon bi-caret-down-fill oxd-select-text--arrow']")
+    @FindBy(xpath = "//label[normalize-space()='Name']/parent::div/parent::div/div[2]/div/div/div[2]")
     private WebElement languagepackagename;
 
     @FindBy(xpath = "//div[@class='oxd-select-option' and @role='option']")
@@ -225,19 +225,16 @@ public class AdminMore extends GlobalPageObjects {
     @FindBy(xpath = "(//div[@class='oxd-switch-wrapper'])[10]")
     private WebElement claimmodule;
 
-    //TODO - Admin More Nationalities Page Method
-    private WebElement nationalitiesRecordsSearch(String NameOfTheNation) {
-        WebElement nationresult = nationalitiesrecords.stream().filter(national ->
-                national.getText().contains(NameOfTheNation)).findFirst().orElse(null);
-        System.out.println(nationresult);
-        return nationresult;
-    }
+    @FindBy(css =".oxd-main-menu-item-wrapper")
+    private List <WebElement> sidemenus;
 
+    //TODO - Admin More Nationalities Page Method
     public void setOperationsOnNationalities(String NameOfTheNation, String NationRecordOperation) throws InterruptedException {
         //more.click();
         nationalities.click();
         Waits.shortPause();
-        WebElement NationRecords = nationalitiesRecordsSearch(NameOfTheNation);
+        //WebElement NationRecords = nationalitiesRecordsSearch(NameOfTheNation);
+        WebElement NationRecords = Search(nationalitiesrecords, NameOfTheNation);
         System.out.println(NationRecords.getText());
         if (NationRecordOperation.equalsIgnoreCase("Delete")) {
             NationRecords.findElement(deleted).click();
@@ -289,7 +286,6 @@ public class AdminMore extends GlobalPageObjects {
 
     //TODO - Admin Changing Corporate Branding Records Method
     public void addCorporateBranding(String PrimaryColorCode, String SecondaryColorCode, String PrimaryFontColorCode, String SecondaryFontColorCode, String GradientColorCode1, String GradientColorCode2, String DisplaySocialMediaYesNo) throws InterruptedException {
-        more.click();
         corporatebranding.click();
         Waits.shortPause();
         primarycoloroption.click();
@@ -322,5 +318,45 @@ public class AdminMore extends GlobalPageObjects {
         }
     }
 
+    public void Localizationconfiguration(String DateFormat) {
+        configuration.click();
+        localization.click();
+        dateformat.click();
+        WebElement dateformats = Search(dateformatrecords, DateFormat);
+        System.out.println(dateformats.getText());
+        dateformat.click();
+        save.click();
+    }
 
+    public void languagepackagesconfiguration(String LanguagePackage) throws InterruptedException {
+        configuration.click();
+        languagepackages.click();
+        add.click();
+        languagepackagename.click();
+        WebElement langpackages = Search(newlanguagepackrecords,LanguagePackage);
+        String langpkg = langpackages.getText();
+        System.out.println(langpkg);
+        langpackages.click();
+        save.click();
+        Waits.shortPause();
+        WebElement langrecords = Search(languagepackagesrecords,LanguagePackage);
+        String langrec = langrecords.getText();
+        System.out.println(langrec);
+        Assert.assertEquals(langrec,LanguagePackage);
+    }
+
+    public void moduleconfiguration(String menu, String ShowHide){
+        configuration.click();
+        moduleconfiguration.click();
+        //leavemodule.click();
+        WebElement sidemenu = Search(sidemenus,menu);
+        System.out.println(sidemenu.isDisplayed());
+        if (menu.equalsIgnoreCase("Leave") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Show")){
+            System.out.println("Working as expected");
+        } else if (menu.equalsIgnoreCase("Leave") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Hide")){
+            leavemodule.click();
+            save.click();
+        }
+
+    }
 }

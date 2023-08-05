@@ -131,7 +131,6 @@ public class AdminUserManagement extends GlobalPageObjects {
     @FindBy(css = ".oxd-button--label-danger")
     private WebElement delete;
 
-    //TODO - Admin Adding new Admin User
     private void deleteExistinguser(String UserName) throws InterruptedException {
         adminModule();
         searchByUserName(UserName);
@@ -139,79 +138,6 @@ public class AdminUserManagement extends GlobalPageObjects {
         waitforElementtoAppear(deleted);
         deleted.click();
         delete.click();
-    }
-
-    public void addnewAdminUser(String SelectRole, String EmpName, String SelectStatus, String UserName, String UserPassword, String ConfirmPassword) throws InterruptedException {
-        adduser.click();
-        Waits.pause();
-        userrole.click();
-        Waits.shortPause();
-
-        Actions roles = new Actions(driver);
-        if (SelectRole.equalsIgnoreCase("Admin")) {
-            roles.doubleClick(roleadmin).build().perform();
-        } else if (SelectRole.equalsIgnoreCase("ESS")) {
-            roles.doubleClick(roleess).build().perform();
-        } else {
-            System.out.println("Dropdown value is not correct to Select User");
-            Assert.fail("Incorrect Dropdown value is not correct to Select User");
-        }
-        Waits.shortPause();
-
-        Actions empnam = new Actions(driver);
-        if (EmpName.equalsIgnoreCase(EmpName)) {
-            empnam.sendKeys(empname, EmpName).build().perform();
-            Waits.longPause();
-            empresults.click();
-
-        } else {
-            System.out.println("Dropdown value is not correct to Select User");
-            Assert.fail("Incorrect Dropdown value is not correct to Select User");
-        }
-
-        Waits.shortPause();
-        status.click();
-        Waits.shortPause();
-
-        Actions status = new Actions(driver);
-        if (SelectStatus.equalsIgnoreCase("Enabled")) {
-            status.doubleClick(statusenable).build().perform();
-        } else if (SelectStatus.equalsIgnoreCase("Disabled")) {
-            status.doubleClick(statusdisable).build().perform();
-        } else {
-            System.out.println("Dropdown value is not correct to Status");
-            Assert.fail("Incorrect Dropdown value to Status");
-        }
-        Waits.shortPause();
-        username.sendKeys(UserName);
-        Waits.shortPause();
-        password.sendKeys(UserPassword);
-        Waits.shortPause();
-        confirmpassword.sendKeys(ConfirmPassword);
-        Waits.shortPause();
-        save.click();
-    }
-
-    public void addAdminUser(String SelectRole, String EmpName, String SelectStatus, String UserName, String UserPassword, String ConfirmPassword) throws InterruptedException {
-        addnewAdminUser(SelectRole, EmpName, SelectStatus, UserName, UserPassword, ConfirmPassword);
-        Waits.longPause();
-        String adduser = adduserheading.getText();
-        System.out.println(adduser);
-        if (adduser.equalsIgnoreCase("Admin\n" + "User Management")) {
-            System.out.println("User Added Successfully");
-        } else if (adduser.equalsIgnoreCase("Admin")) {
-            String errormsg = alreadyexist.getText();
-            System.out.println(errormsg);
-            Waits.shortPause();
-            deleteExistinguser(UserName);
-            Waits.shortPause();
-            addnewAdminUser(SelectRole, EmpName, SelectStatus, UserName, UserPassword, ConfirmPassword);
-            waitforElementtoAppear(messagecontainer);
-            String errormeassage = messagecontainer.getText();
-            System.out.println(errormeassage);
-            Assert.assertEquals(errormeassage, SuccessSavedMessage);
-            Assert.assertEquals(errormsg, "Already exists");
-        }
     }
 
     //TODO - Admin Searching Employee By UserName
@@ -301,6 +227,80 @@ public class AdminUserManagement extends GlobalPageObjects {
             System.out.println(errormeassage);
             Assert.assertEquals(errormeassage, errorMessage);
             Assert.fail("Searching employee name is not available in the records");
+        }
+    }
+
+    public void addnewAdminUser(String SelectRole, String EmpName, String SelectStatus, String UserName, String UserPassword, String ConfirmPassword) throws InterruptedException {
+        adduser.click();
+        Waits.pause();
+        userrole.click();
+        Waits.shortPause();
+
+        Actions roles = new Actions(driver);
+        if (SelectRole.equalsIgnoreCase("Admin")) {
+            roles.doubleClick(roleadmin).build().perform();
+        } else if (SelectRole.equalsIgnoreCase("ESS")) {
+            roles.doubleClick(roleess).build().perform();
+        } else {
+            System.out.println("Dropdown value is not correct to Select User");
+            Assert.fail("Incorrect Dropdown value is not correct to Select User");
+        }
+        Waits.shortPause();
+
+        Actions empnam = new Actions(driver);
+        if (EmpName.equalsIgnoreCase(EmpName)) {
+            empnam.sendKeys(empname, EmpName).build().perform();
+            Waits.longPause();
+            empresults.click();
+
+        } else {
+            System.out.println("Dropdown value is not correct to Select User");
+            Assert.fail("Incorrect Dropdown value is not correct to Select User");
+        }
+
+        Waits.shortPause();
+        status.click();
+        Waits.shortPause();
+
+        Actions status = new Actions(driver);
+        if (SelectStatus.equalsIgnoreCase("Enabled")) {
+            status.doubleClick(statusenable).build().perform();
+        } else if (SelectStatus.equalsIgnoreCase("Disabled")) {
+            status.doubleClick(statusdisable).build().perform();
+        } else {
+            System.out.println("Dropdown value is not correct to Status");
+            Assert.fail("Incorrect Dropdown value to Status");
+        }
+        Waits.shortPause();
+        username.sendKeys(UserName);
+        Waits.shortPause();
+        password.sendKeys(UserPassword);
+        Waits.shortPause();
+        confirmpassword.sendKeys(ConfirmPassword);
+        Waits.shortPause();
+        save.click();
+    }
+
+    //TODO - Admin Adding new Admin User
+    public void addAdminUser(String SelectRole, String EmpName, String SelectStatus, String UserName, String UserPassword, String ConfirmPassword) throws InterruptedException {
+        addnewAdminUser(SelectRole, EmpName, SelectStatus, UserName, UserPassword, ConfirmPassword);
+        Waits.longPause();
+        String adduser = adduserheading.getText();
+        System.out.println(adduser);
+        if (adduser.equalsIgnoreCase("Admin\n" + "User Management")) {
+            System.out.println("User Added Successfully");
+        } else if (adduser.equalsIgnoreCase("Admin")) {
+            String errormsg = alreadyexist.getText();
+            System.out.println(errormsg);
+            Waits.shortPause();
+            deleteExistinguser(UserName);
+            Waits.shortPause();
+            addnewAdminUser(SelectRole, EmpName, SelectStatus, UserName, UserPassword, ConfirmPassword);
+            waitforElementtoAppear(messagecontainer);
+            String errormeassage = messagecontainer.getText();
+            System.out.println(errormeassage);
+            Assert.assertEquals(errormeassage, SuccessSavedMessage);
+            Assert.assertEquals(errormsg, "Already exists");
         }
     }
 }

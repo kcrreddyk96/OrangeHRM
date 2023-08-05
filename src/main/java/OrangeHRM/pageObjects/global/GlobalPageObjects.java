@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
+import java.util.List;
 
 
 public class GlobalPageObjects {
@@ -175,5 +176,13 @@ public class GlobalPageObjects {
     public void waitforElementtoDisappear(WebElement element) { // TODO - invisibility of Web Element using WebElement Locator
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.invisibilityOf(element));
+    }
+
+    public WebElement Search(List<WebElement> recordslist, String recordName) {
+        //countCurrency.forEach(curr->System.out.println(curr.getText()));
+        WebElement Records = recordslist.stream().filter(record ->
+                record.getText().contains(recordName)).findFirst().orElse(null);
+        System.out.println(Records.getText());
+        return Records;
     }
 }
