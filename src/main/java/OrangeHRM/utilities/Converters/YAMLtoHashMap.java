@@ -169,4 +169,9 @@ public class YAMLtoHashMap extends Browser {
         return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminAddingNewNationalitiesRecord");
     }
 
+    @DataProvider
+    public static Object[][] adminModuleConfiguration() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminModuleConfiguration");
+    }
+
 }

@@ -157,7 +157,10 @@ adminAddCorporateBranding:
   DisplaySocialMediaYesNo:
 
   # ************* Admin Configuration Page ************* #
-  # Admin Configuration Module Pages
+  # Admin Configuration Module Configuration Module Pages
+adminModuleConfiguration:
+  menu : Directory
+  ShowHide : Hide
 
 
 
