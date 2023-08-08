@@ -318,7 +318,7 @@ public class AdminMore extends GlobalPageObjects {
         }
     }
 
-    public void Localizationconfiguration(String DateFormat) {
+    public void localizationconfiguration(String DateFormat) {
         configuration.click();
         localization.click();
         dateformat.click();

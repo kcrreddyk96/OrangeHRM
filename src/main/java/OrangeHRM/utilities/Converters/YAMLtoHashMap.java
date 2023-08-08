@@ -95,6 +95,16 @@ public class YAMLtoHashMap extends Browser {
     }
 
     @DataProvider
+    public static Object[][] adminSearchingLocation() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminSearchingLocation");
+    }
+
+    @DataProvider
+    public static Object[][] adminAddingLocation() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminAddingLocation");
+    }
+
+    @DataProvider
     public static Object[][] adminSearchORGStructure() {
         return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminSearchORGStructure");
     }
@@ -110,48 +120,53 @@ public class YAMLtoHashMap extends Browser {
     }
 
     @DataProvider
-    public static Object[][] adminSetOperationsOnSkill() {
-        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminSetOperationsOnSkill");
+    public static Object[][] adminSearchingSkillRecords() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminSearchingSkillRecords");
     }
 
     @DataProvider
-    public static Object[][] adminAddNewSkillsRecord() {
-        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminAddNewSkillsRecord");
+    public static Object[][] adminAddingNewSkillsRecord() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminAddingNewSkillsRecord");
     }
 
     @DataProvider
-    public static Object[][] adminSetOperationsOnEducation() {
-        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminSetOperationsOnEducation");
+    public static Object[][] adminSearchingEducationRecords() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminSearchingEducationRecords");
     }
 
     @DataProvider
-    public static Object[][] adminAddNewEductationRecord() {
-        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminAddNewEductationRecord");
+    public static Object[][] adminAddingNewEducationRecord() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminAddingNewEducationRecord");
     }
 
     @DataProvider
-    public static Object[][] adminSetOperationsOnLicenses() {
-        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminSetOperationsOnLicenses");
+    public static Object[][] adminSearchingLicenseRecords() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminSearchingLicenseRecords");
     }
 
     @DataProvider
-    public static Object[][] adminAddNewLicenseRecord() {
-        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminAddNewLicenseRecord");
+    public static Object[][] adminAddingNewLicenseRecord() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminAddingNewLicenseRecord");
     }
 
     @DataProvider
-    public static Object[][] adminSetOperationsOnLanguages() {
-        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminSetOperationsOnLanguages");
+    public static Object[][] adminSearchingLanguageRecords() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminSearchingLanguageRecords");
     }
 
     @DataProvider
-    public static Object[][] adminAddNewLanguageRecord() {
-        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminAddNewLanguageRecord");
+    public static Object[][] adminAddingNewLanguageRecord() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminAddingNewLanguageRecord");
     }
 
     @DataProvider
-    public static Object[][] adminSetOperationsOnMemberships() {
-        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminSetOperationsOnMemberships");
+    public static Object[][] adminSearchingMembershipRecords() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminSearchingMembershipRecords");
+    }
+
+    @DataProvider
+    public static Object[][] adminAddingNewMembershipRecord() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminAddingNewMembershipRecord");
     }
 
     @DataProvider
@@ -160,18 +175,27 @@ public class YAMLtoHashMap extends Browser {
     }
 
     @DataProvider
-    public static Object[][] adminAddNewNationalitiesRecord() {
-        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminAddNewNationalitiesRecord");
+    public static Object[][] adminAddingNewNationalitiesRecord() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminAddingNewNationalitiesRecord");
     }
 
     @DataProvider
-    public static Object[][] adminAddingNewNationalitiesRecord() {
-        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminAddingNewNationalitiesRecord");
+    public static Object[][] adminCorporateBranding() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminCorporateBranding");
+    }
+
+    @DataProvider
+    public static Object[][] adminLocalizationConfiguration() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminLocalizationConfiguration");
+    }
+
+    @DataProvider
+    public static Object[][] adminLanguagePackageConfiguration() {
+        return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminLanguagePackageConfiguration");
     }
 
     @DataProvider
     public static Object[][] adminModuleConfiguration() {
         return readYAML("src/test/java/OrangeHRM/testData/dataSets.yml", "adminModuleConfiguration");
     }
-
 }
