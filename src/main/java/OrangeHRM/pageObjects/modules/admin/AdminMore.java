@@ -225,8 +225,8 @@ public class AdminMore extends GlobalPageObjects {
     @FindBy(xpath = "(//div[@class='oxd-switch-wrapper'])[10]")
     private WebElement claimmodule;
 
-    @FindBy(css =".oxd-main-menu-item-wrapper")
-    private List <WebElement> sidemenus;
+    @FindBy(css = ".oxd-main-menu-item-wrapper")
+    private List<WebElement> sidemenus;
 
     //TODO - Admin More Nationalities Page Method
     public void setOperationsOnNationalities(String NameOfTheNation, String NationRecordOperation) throws InterruptedException {
@@ -333,30 +333,230 @@ public class AdminMore extends GlobalPageObjects {
         languagepackages.click();
         add.click();
         languagepackagename.click();
-        WebElement langpackages = Search(newlanguagepackrecords,LanguagePackage);
+        WebElement langpackages = Search(newlanguagepackrecords, LanguagePackage);
         String langpkg = langpackages.getText();
         System.out.println(langpkg);
         langpackages.click();
         save.click();
         Waits.shortPause();
-        WebElement langrecords = Search(languagepackagesrecords,LanguagePackage);
+        WebElement langrecords = Search(languagepackagesrecords, LanguagePackage);
         String langrec = langrecords.getText();
         System.out.println(langrec);
-        Assert.assertEquals(langrec,LanguagePackage);
+        Assert.assertEquals(langrec, LanguagePackage);
     }
 
-    public void moduleconfiguration(String menu, String ShowHide){
+    public void moduleconfiguration(String menu, String ShowHide) {
         configuration.click();
         moduleconfiguration.click();
-        //leavemodule.click();
-        WebElement sidemenu = Search(sidemenus,menu);
-        System.out.println(sidemenu.isDisplayed());
-        if (menu.equalsIgnoreCase("Leave") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Show")){
-            System.out.println("Working as expected");
-        } else if (menu.equalsIgnoreCase("Leave") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Hide")){
-            leavemodule.click();
-            save.click();
-        }
+        try {
+            WebElement sidemenu = Search(sidemenus, menu);
+            System.out.println(sidemenu.isDisplayed());
 
+            //TODO - Leave Module
+            if (menu.equalsIgnoreCase("Leave") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Show")) {
+                System.out.println("Module has been Show");
+            } else if (menu.equalsIgnoreCase("Leave") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Hide")) {
+                leavemodule.click();
+                save.click();
+                waitforElementtoAppear(operationsuccessmessage);
+                System.out.println(operationsuccessmessage.getText());
+                Assert.assertEquals(operationsuccessmessage.getText(), SuccessSavedMessage);
+                System.out.println(menu + " Module has been Hide");
+
+            }
+            //TODO - Time Module
+            else if (menu.equalsIgnoreCase("Time") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Show")) {
+                System.out.println("Module has been Show");
+            } else if (menu.equalsIgnoreCase("Time") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Hide")) {
+                leavemodule.click();
+                save.click();
+                waitforElementtoAppear(operationsuccessmessage);
+                System.out.println(operationsuccessmessage.getText());
+                Assert.assertEquals(operationsuccessmessage.getText(), SuccessSavedMessage);
+                System.out.println(menu + " Module has been Hide");
+            }
+            //TODO - Recruitment Module
+            else if (menu.equalsIgnoreCase("Recruitment") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Show")) {
+                System.out.println("Module has been Show");
+            } else if (menu.equalsIgnoreCase("Recruitment") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Hide")) {
+                leavemodule.click();
+                save.click();
+                waitforElementtoAppear(operationsuccessmessage);
+                System.out.println(operationsuccessmessage.getText());
+                Assert.assertEquals(operationsuccessmessage.getText(), SuccessSavedMessage);
+                System.out.println(menu + " Module has been Hide");
+            }
+
+            //TODO - Performance Module
+            else if (menu.equalsIgnoreCase("Performance") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Show")) {
+                System.out.println("Module has been Show");
+            } else if (menu.equalsIgnoreCase("Performance") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Hide")) {
+                leavemodule.click();
+                save.click();
+                waitforElementtoAppear(operationsuccessmessage);
+                System.out.println(operationsuccessmessage.getText());
+                Assert.assertEquals(operationsuccessmessage.getText(), SuccessSavedMessage);
+                System.out.println(menu + " Module has been Hide");
+            }
+
+            //TODO - Directory Module
+            else if (menu.equalsIgnoreCase("Directory") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Show")) {
+                System.out.println("Module has been Show");
+            } else if (menu.equalsIgnoreCase("Directory") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Hide")) {
+                leavemodule.click();
+                save.click();
+                waitforElementtoAppear(operationsuccessmessage);
+                System.out.println(operationsuccessmessage.getText());
+                Assert.assertEquals(operationsuccessmessage.getText(), SuccessSavedMessage);
+                System.out.println(menu + " Module has been Hide");
+            }
+
+            //TODO - Maintenance Module
+            else if (menu.equalsIgnoreCase("Maintenance") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Show")) {
+                System.out.println("Module has been Show");
+            } else if (menu.equalsIgnoreCase("Maintenance") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Hide")) {
+                leavemodule.click();
+                save.click();
+                waitforElementtoAppear(operationsuccessmessage);
+                System.out.println(operationsuccessmessage.getText());
+                Assert.assertEquals(operationsuccessmessage.getText(), SuccessSavedMessage);
+                System.out.println(menu + " Module has been Hide");
+            }
+
+            //TODO - Mobile Module
+            else if (menu.equalsIgnoreCase("Mobile") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Show")) {
+                System.out.println(" Module has been Show");
+            } else if (menu.equalsIgnoreCase("Mobile") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Hide")) {
+                leavemodule.click();
+                save.click();
+                waitforElementtoAppear(operationsuccessmessage);
+                System.out.println(operationsuccessmessage.getText());
+                Assert.assertEquals(operationsuccessmessage.getText(), SuccessSavedMessage);
+                System.out.println(menu + " Module has been");
+            }
+
+            //TODO - Claim Module
+            else if (menu.equalsIgnoreCase("Claim") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Show")) {
+                System.out.println(menu + " Module has been Show");
+            } else if (menu.equalsIgnoreCase("Claim") && sidemenu.isDisplayed() && ShowHide.equalsIgnoreCase("Hide")) {
+                leavemodule.click();
+                save.click();
+                waitforElementtoAppear(operationsuccessmessage);
+                System.out.println(operationsuccessmessage.getText());
+                Assert.assertEquals(operationsuccessmessage.getText(), SuccessSavedMessage);
+                System.out.println(menu + " Module has been Hide");
+            }
+        } catch (Exception e) {
+            //TODO - Leave Module
+            if (menu.equalsIgnoreCase("Leave") && ShowHide.equalsIgnoreCase("Hide")) {
+                System.out.println(menu + " Module has been Hide");
+                e.printStackTrace();
+            } else if (menu.equalsIgnoreCase("Leave") && ShowHide.equalsIgnoreCase("Show")) {
+                leavemodule.click();
+                save.click();
+                waitforElementtoAppear(operationsuccessmessage);
+                System.out.println(operationsuccessmessage.getText());
+                Assert.assertEquals(operationsuccessmessage.getText(), SuccessSavedMessage);
+                System.out.println(menu + " Module has been Show");
+                e.printStackTrace();
+            }
+            //TODO - Time Module
+            else if (menu.equalsIgnoreCase("Time") && ShowHide.equalsIgnoreCase("Hide")) {
+                System.out.println(menu + " Module has been Hide");
+                e.printStackTrace();
+            } else if (menu.equalsIgnoreCase("Time") && ShowHide.equalsIgnoreCase("Show")) {
+                leavemodule.click();
+                save.click();
+                waitforElementtoAppear(operationsuccessmessage);
+                System.out.println(operationsuccessmessage.getText());
+                Assert.assertEquals(operationsuccessmessage.getText(), SuccessSavedMessage);
+                System.out.println(menu + " Module has been Show");
+                e.printStackTrace();
+            }
+
+            //TODO - Recruitment Module
+            else if (menu.equalsIgnoreCase("Recruitment") && ShowHide.equalsIgnoreCase("Hide")) {
+                System.out.println(menu + " Module has been Hide");
+                e.printStackTrace();
+            } else if (menu.equalsIgnoreCase("Recruitment") && ShowHide.equalsIgnoreCase("Show")) {
+                leavemodule.click();
+                save.click();
+                waitforElementtoAppear(operationsuccessmessage);
+                System.out.println(operationsuccessmessage.getText());
+                Assert.assertEquals(operationsuccessmessage.getText(), SuccessSavedMessage);
+                System.out.println(menu + " Module has been Show");
+                e.printStackTrace();
+            }
+
+            //TODO - Performance Module
+            else if (menu.equalsIgnoreCase("Performance") && ShowHide.equalsIgnoreCase("Hide")) {
+                System.out.println(menu + " Module has been Hide");
+                e.printStackTrace();
+            } else if (menu.equalsIgnoreCase("Performance") && ShowHide.equalsIgnoreCase("Show")) {
+                leavemodule.click();
+                save.click();
+                waitforElementtoAppear(operationsuccessmessage);
+                System.out.println(operationsuccessmessage.getText());
+                Assert.assertEquals(operationsuccessmessage.getText(), SuccessSavedMessage);
+                System.out.println(menu + " Module has been Show");
+                e.printStackTrace();
+            }
+
+            //TODO - Directory Module
+            else if (menu.equalsIgnoreCase("Directory") && ShowHide.equalsIgnoreCase("Hide")) {
+                System.out.println(menu + " Module has been Hide");
+                e.printStackTrace();
+            } else if (menu.equalsIgnoreCase("Directory") && ShowHide.equalsIgnoreCase("Show")) {
+                leavemodule.click();
+                save.click();
+                waitforElementtoAppear(operationsuccessmessage);
+                System.out.println(operationsuccessmessage.getText());
+                Assert.assertEquals(operationsuccessmessage.getText(), SuccessSavedMessage);
+                System.out.println(menu + " Module has been Show");
+                e.printStackTrace();
+            }
+
+            //TODO - Maintenance Module
+            else if (menu.equalsIgnoreCase("Maintenance") && ShowHide.equalsIgnoreCase("Hide")) {
+                System.out.println(menu + " Module has been Hide");
+                e.printStackTrace();
+            } else if (menu.equalsIgnoreCase("Maintenance") && ShowHide.equalsIgnoreCase("Show")) {
+                leavemodule.click();
+                save.click();
+                waitforElementtoAppear(operationsuccessmessage);
+                System.out.println(operationsuccessmessage.getText());
+                Assert.assertEquals(operationsuccessmessage.getText(), SuccessSavedMessage);
+                System.out.println(menu + " Module has been Show");
+                e.printStackTrace();
+            }
+
+            //TODO - Mobile Module
+            else if (menu.equalsIgnoreCase("Mobile") && ShowHide.equalsIgnoreCase("Hide")) {
+                System.out.println(menu + " Module has been Hide");
+                e.printStackTrace();
+            } else if (menu.equalsIgnoreCase("Mobile") && ShowHide.equalsIgnoreCase("Show")) {
+                leavemodule.click();
+                save.click();
+                waitforElementtoAppear(operationsuccessmessage);
+                System.out.println(operationsuccessmessage.getText());
+                Assert.assertEquals(operationsuccessmessage.getText(), SuccessSavedMessage);
+                System.out.println(menu + " Module has been Show");
+                e.printStackTrace();
+            }
+
+            //TODO - Claim Module
+            else if (menu.equalsIgnoreCase("Claim") && ShowHide.equalsIgnoreCase("Hide")) {
+                System.out.println(menu + " Module has been Hide");
+                e.printStackTrace();
+            } else if (menu.equalsIgnoreCase("Claim") && ShowHide.equalsIgnoreCase("Show")) {
+                leavemodule.click();
+                save.click();
+                waitforElementtoAppear(operationsuccessmessage);
+                System.out.println(operationsuccessmessage.getText());
+                Assert.assertEquals(operationsuccessmessage.getText(), SuccessSavedMessage);
+                System.out.println(menu + " Module has been Show");
+                e.printStackTrace();
+            }
+        }
     }
 }
