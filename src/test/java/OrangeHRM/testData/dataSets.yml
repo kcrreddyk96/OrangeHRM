@@ -73,12 +73,30 @@ adminEditingGeneralInformationVerification:
   GeneralCity: Secaucus
   GeneralProvince: 'New Jersey'
   GeneralPostal: '07094'
-  SelectedCountry: USA
+  SelectedCountry: India
   GeneralNotes: 'Orange HRM is CRM Tool, OrangeHRM provides a scalable HRM solution for small and midsize businesses.'
 
 # Admin Searching Dept in Org Structure
+adminSearchingLocation:
+  LocationName: 'New York Sales Office'
+  LocationCity: 'New York'
+  SelectedCountry: 'United States'
+
+# Admin Searching Dept in Org Structure
+adminAddingLocation:
+  Name: IT Park
+  City: 'New Jersey'
+  Province: 'New Jersey'
+  SelectedCountry: United States
+  Phone: '914-458-5555'
+  Fax: '50051'
+  sendAddress: '538 Teal Plaza,Secaucus, New Jersey 07094, USA.'
+  LocationNotes: 'Park in the New Jersey State'
+
+
+# Admin Searching Dept in Org Structure
 adminSearchORGStructure:
-  DeptName: IT
+  DeptName: Engineering
 
 # Admin Changing Org Structure
 adminChangeOrganizationStructure:
@@ -94,46 +112,50 @@ adminAddOrganizationUnit:
 
   # ************* Admin Qualifications Page ************* #
 # Admin Qualifications Skills Page
-adminSetOperationsOnSkill:
-  SkillName:
-  SkillRecordOperation:
+adminSearchingSkillRecords:
+  SkillName: Java
+  SkillRecordOperation: Delete
 
 # Admin Qualifications Add New Skills Record Page Method
-adminAddNewSkillsRecord:
-  SkillName:
-  SkillDesc:
+adminAddingNewSkillsRecord:
+  SkillName: Java
+  SkillDesc: 'Java is OOPS Language'
 
 # Admin Qualifications Searching Education Degree Record Page Method
-adminSetOperationsOnEducation:
-  Degree:
-  EducationRecordOperation:
+adminSearchingEducationRecords:
+  Degree: Bachelor's Degree
+  EducationRecordOperation: Delete
 
 # Admin Qualifications Add New Education Degree Record Page Method
-adminAddNewEductationRecord:
-  EduDegreeName:
+adminAddingNewEducationRecord:
+  EduDegreeName: Bachelor's Degree
 
 # Admin Qualifications License Record Page Method
-adminSetOperationsOnLicenses:
-  LicenseName:
-  LicenseRecordOperation:
+adminSearchingLicenseRecords:
+  LicenseName: 'Certified Information Security Manager (CISM)'
+  LicenseRecordOperation: Delete
 
 # Admin Qualifications Add New License Record Page Method
-adminAddNewLicenseRecord:
-  LicensedName:
+adminAddingNewLicenseRecord:
+  LicenseName: 'Certified Information Security Manager (CISM)'
 
 # Admin Qualifications Language Record Page Method
-adminSetOperationsOnLanguages:
-  LanguageName:
-  LanguageRecordOperation:
+adminSearchingLanguageRecords:
+  LanguageName: Telugu
+  LanguageRecordOperation: Delete
 
 # Admin Qualifications Add New Language Record Page Method
-adminAddNewLanguageRecord:
-  AddLanguageName:
+adminAddingNewLanguageRecord:
+  AddLanguageName: Telugu
 
 # Admin Qualifications Membership Record Page Method
-adminSetOperationsOnMemberships:
-  MembershipName:
-  MembershipDetails:
+adminSearchingMembershipRecords:
+  MembershipName: ACCA
+  MembershipDetails: Delete
+
+# Admin Qualifications Membership Record Page Method
+adminAddingNewMembershipRecord:
+  MembershipRecordName: ACCA
 
   # ************* Admin Nationalities Page ************* #
 # Admin Searching Nationalities Records Method
@@ -146,26 +168,29 @@ adminAddingNewNationalitiesRecord:
   NameOfTheNation: Armenian
 
   # ************* Admin Corporate Branding Page ************* #
-# Admin Changing Corporate Branding Records Method
+# Admin Changing Corporate Branding Method
 adminAddCorporateBranding:
-  PrimaryColorCode:
-  SecondaryColorCode:
-  PrimaryFontColorCode:
-  SecondaryFontColorCode:
-  GradientColorCode1:
-  GradientColorCode2:
-  DisplaySocialMediaYesNo:
+  PrimaryColorCode: '#f6aa06'
+  SecondaryColorCode: '#85ea0b'
+  PrimaryFontColorCode: '#FFFFFF'
+  SecondaryFontColorCode: '#FFFFFF'
+  GradientColorCode1: '#e8bb83'
+  GradientColorCode2: '#f55106'
+  DisplaySocialMediaYesNo: Yes
+
+# Admin Changing Localization Configuration Method
+adminLocalizationConfiguration:
+  DateFormat: 'mm-dd-yyyy ( 08-08-2023 )'
+
+# Admin Changing Language Package Configuration Method
+adminLanguagePackageConfiguration:
+  LanguagePackage: 'English (India)'
 
   # ************* Admin Configuration Page ************* #
-  # Admin Configuration Module Configuration Module Pages
+# Admin Configuration Module Configuration Module Pages
 adminModuleConfiguration:
-  menu : Directory
-  ShowHide : Hide
-
-
-
-
-
+  menu: Directory
+  ShowHide: Hide
 
   # ************* Next Page  Page ************* #
 # Next Page Method

@@ -147,6 +147,9 @@ public class AdminOrganization extends GlobalPageObjects {
 
     By strAddUnit = By.xpath("(//div[@class='org-action']/button[@class='oxd-icon-button org-action-icon'])[3]");
 
+    @FindBy(css = ".oxd-button--label-danger")
+    private WebElement yesDelete;
+
     @FindBy(xpath = "//span[@class='oxd-switch-input oxd-switch-input--active --label-left']")
     private WebElement organizationedit;
 
@@ -230,20 +233,19 @@ public class AdminOrganization extends GlobalPageObjects {
     }
 
     //TODO - Admin search Locations
-    public void searchLocations(String LocationName, String SelectedCountry) throws InterruptedException {
+    public void searchLocations(String LocationName, String LocationCity, String SelectedCountry) throws InterruptedException {
         organization.click();
         Waits.shortPause();
         locations.click();
-        Waits.shortPause();
-        locationname.sendKeys(LocationName);
-        Waits.shortPause();
+        locationsname.sendKeys(LocationName);
+        locationscity.sendKeys(LocationCity);
         selectCountry(SelectedCountry);
         Waits.shortPause();
         search.click();
     }
 
     //TODO - Admin Add Locations
-    public void addLocation(String Name, String City, String Province, String SelectedCountry, String Phone, String Fax, String sendAddress, String LocationNotes) throws InterruptedException {
+    public void addLocation(String Name, String City, String Province, String SelectedCountry, String Phone, String Fax, String SendAddress, String LocationNotes) throws InterruptedException {
         organization.click();
         Waits.shortPause();
         locations.click();
@@ -261,7 +263,7 @@ public class AdminOrganization extends GlobalPageObjects {
         Waits.shortPause();
         locationfax.sendKeys(Fax);
         Waits.shortPause();
-        locationaddress.sendKeys(sendAddress);
+        locationaddress.sendKeys(SendAddress);
         Waits.shortPause();
         locationnotes.sendKeys(LocationNotes);
         Waits.shortPause();
@@ -286,8 +288,10 @@ public class AdminOrganization extends GlobalPageObjects {
         Waits.shortPause();
         if (UnitOperation.contains("Delete")) {
             OrgResults.findElement(strDelete).click();
+            yesDelete.click();
         } else if (UnitOperation.contains("Edit")) {
             OrgResults.findElement(strEdit).click();
+
         } else if (UnitOperation.contains("AddUnit")) {
             OrgResults.findElement(strAddUnit).click();
         } else {
