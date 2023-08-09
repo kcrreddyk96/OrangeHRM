@@ -18,7 +18,7 @@ adminSearchByStatus:
 # Admin Adding new User as Admin
 adminAddAdminUser:
   SelectRole: Admin
-  EmpName: ad
+  EmpName: a
   SelectStatus: Enabled
   UserName: akane1
   UserPassword: 'admin123'

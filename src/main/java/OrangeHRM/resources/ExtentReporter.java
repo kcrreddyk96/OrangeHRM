@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ExtentReporter {
-    static String path = System.getProperty("user.dir") + "//testReports//index.html";
+    static String path = System.getProperty("user.dir") + "//testReports//testReport.html";
     static ExtentSparkReporter reporter = new ExtentSparkReporter(path);
     static ExtentReports extentreports = new ExtentReports();
 

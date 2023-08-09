@@ -48,6 +48,9 @@ public class AdminJob extends GlobalPageObjects {
     @FindBy(xpath = "//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
     private WebElement addItems;
 
+    @FindBy(css = ".bi-trash")
+    private WebElement deleteopt;
+
     //TODO - Admin Job Titles PageObjects
 
     @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
@@ -80,6 +83,15 @@ public class AdminJob extends GlobalPageObjects {
 
     @FindBy(xpath = "(//button[@class='oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space'])[2]")
     private WebElement currencysave;
+
+    @FindBy(xpath = "//span[normalize-space()='Already exists']")
+    private WebElement alreadyexist;
+
+    @FindBy(css = ".oxd-table-row--with-border")
+    private List<WebElement> paygradesrecords;
+
+    @FindBy(css = ".oxd-table-row--with-border")
+    private WebElement paygradesrec;
 
     //TODO - Admin Employment Status PageObjects
     @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
@@ -135,12 +147,29 @@ public class AdminJob extends GlobalPageObjects {
         addpayc.click();
         addpaygradename.sendKeys(PayGradeName);
         savesall.click();
+        Waits.shortPause();
+
+        if (alreadyexist.isDisplayed()) {
+            job.click();
+            Waits.shortPause();
+            paygrades.click();
+            Waits.shortPause();
+            DeleteRecords(paygradesrecords, PayGradeName);
+            Waits.shortPause();
+            waitforElementtoAppear(paygradesrec);
+            addpayc.click();
+            addpaygradename.sendKeys(PayGradeName);
+            savesall.click();
+        } else {
+            System.out.println("no data found");
+        }
         //TODO - Admin Adding new New Currency
+
         addpayc.click();
         Waits.shortPause();
         currencycode.click();
         Waits.shortPause();
-        WebElement currency = Search(countCurrency,CurrentCodeINR);
+        WebElement currency = Search(countCurrency, CurrentCodeINR);
         currency.click();
         Waits.shortPause();
         minpay.sendKeys(MinPay);
@@ -153,6 +182,11 @@ public class AdminJob extends GlobalPageObjects {
         paygrades.click();
         Waits.shortPause();
         adminModule();
+    }
+
+    public void paygrade(String PayGradeName, String CurrentCodeINR, String MinPay, String MaxPay) throws InterruptedException {
+        adminAddPayGrades(PayGradeName, CurrentCodeINR, MinPay, MaxPay);
+
     }
 
     //TODO - Admin Adding New Employment Status

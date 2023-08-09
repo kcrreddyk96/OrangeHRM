@@ -18,6 +18,10 @@ import java.util.List;
 public class GlobalPageObjects {
     WebDriver driver;
 
+    String SuccessDeleteMessage = "Success\n" +
+            "Successfully Deleted\n" +
+            "×";
+
     public GlobalPageObjects(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -84,6 +88,18 @@ public class GlobalPageObjects {
 
     @FindBy(xpath = "(//li[@class='oxd-main-menu-item-wrapper'])[1]")
     private WebElement selectItem;
+
+    @FindBy(xpath = "//button[normalize-space()='Yes, Delete']")
+    private WebElement recorddeleteconfirm;
+
+    @FindBy(xpath = "//button[normalize-space()='No, Cancel']")
+    private WebElement recorddeletecancel;
+
+    @FindBy(xpath = "(//i[@class='oxd-icon bi-trash'])[1]")
+    private WebElement deleterecord;
+
+    @FindBy(css = "#oxd-toaster_1")
+    private WebElement operationsuccessmessage;
 
     public void profiledropdown(String SelectDropdown) throws InterruptedException {
         userProfileDropdown.click();
@@ -184,5 +200,16 @@ public class GlobalPageObjects {
                 record.getText().contains(recordName)).findFirst().orElse(null);
         System.out.println(Records.getText());
         return Records;
+    }
+
+    public void DeleteRecords(List <WebElement> RecordList, String RecordName) throws InterruptedException {
+        WebElement NationRecords = Search(RecordList, RecordName);
+        System.out.println(NationRecords.getText());
+        Waits.shortPause();
+        deleterecord.click();
+        recorddeleteconfirm.click();
+        Waits.shortPause();
+        System.out.println(operationsuccessmessage.getText());
+        Assert.assertEquals(operationsuccessmessage.getText(), SuccessDeleteMessage);
     }
 }

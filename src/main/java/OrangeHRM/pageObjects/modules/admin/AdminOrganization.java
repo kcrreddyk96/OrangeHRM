@@ -109,28 +109,28 @@ public class AdminOrganization extends GlobalPageObjects {
     private WebElement addlocation;
 
     //TODO - Admin Add Location Page Objects
-    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active' and @placeholder='Type here ...'])[1]")
+    @FindBy(xpath = "//label[normalize-space()='Name']/parent::div/parent::div/div[2]/input")
     private WebElement locationname;
 
-    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active' and @placeholder='Type here ...'])[2]")
+    @FindBy(xpath = "//label[normalize-space()='City']/parent::div/parent::div/div[2]/input")
     private WebElement locationcity;
 
-    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active' and @placeholder='Type here ...'])[3]")
+    @FindBy(xpath = "//label[normalize-space()='State/Province']/parent::div/parent::div/div[2]/input")
     private WebElement locationprovince;
 
-    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active' and @placeholder='Type here ...'])[4]")
+    @FindBy(xpath = "//label[normalize-space()='Zip/Postal Code']/parent::div/parent::div/div[2]/input")
     private WebElement locationpostalcode;
 
-    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active' and @placeholder='Type here ...'])[5]")
+    @FindBy(xpath = "//label[normalize-space()='Phone']/parent::div/parent::div/div[2]/input")
     private WebElement locationphone;
 
-    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active' and @placeholder='Type here ...'])[6]")
+    @FindBy(xpath = "//label[normalize-space()='Fax']/parent::div/parent::div/div[2]/input")
     private WebElement locationfax;
 
-    @FindBy(xpath = "(//textarea[@class='oxd-textarea oxd-textarea--active oxd-textarea--resize-vertical' and @placeholder='Type here ...'])[1]")
+    @FindBy(xpath = "//label[normalize-space()='Address']/parent::div/parent::div/div[2]/textarea")
     private WebElement locationaddress;
 
-    @FindBy(xpath = "(//textarea[@class='oxd-textarea oxd-textarea--active oxd-textarea--resize-vertical' and @placeholder='Type here ...'])[1]")
+    @FindBy(xpath = "//label[normalize-space()='Notes']/parent::div/parent::div/div[2]/textarea")
     private WebElement locationnotes;
 
     @FindBy(xpath = ".orangehrm-left-space")
@@ -165,7 +165,7 @@ public class AdminOrganization extends GlobalPageObjects {
     @FindBy(xpath = "//textarea[@class='oxd-textarea oxd-textarea--active oxd-textarea--resize-vertical']")
     private WebElement addunitdesc;
 
-    @FindBy(xpath = ".orangehrm-left-space")
+    @FindBy(css = ".orangehrm-left-space")
     private WebElement unitsave;
 
     @FindBy(css = ".oxd-dialog-close-button-position")
