@@ -230,10 +230,8 @@ public class AdminMore extends GlobalPageObjects {
 
     //TODO - Admin More Nationalities Page Method
     public void setOperationsOnNationalities(String NameOfTheNation, String NationRecordOperation) throws InterruptedException {
-        //more.click();
         nationalities.click();
         Waits.shortPause();
-        //WebElement NationRecords = nationalitiesRecordsSearch(NameOfTheNation);
         WebElement NationRecords = Search(nationalitiesrecords, NameOfTheNation);
         System.out.println(NationRecords.getText());
         if (NationRecordOperation.equalsIgnoreCase("Delete")) {
