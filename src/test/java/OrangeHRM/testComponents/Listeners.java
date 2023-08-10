@@ -1,6 +1,5 @@
 package OrangeHRM.testComponents;
 
-import OrangeHRM.resources.ExtentReporter;
 import OrangeHRM.utilities.Browser;
 import OrangeHRM.utilities.Screenshot;
 import com.aventstack.extentreports.ExtentReports;
@@ -15,7 +14,7 @@ import java.io.IOException;
 
 public class Listeners extends Browser implements ITestListener {
     ExtentTest test;
-    ExtentReports extent = ExtentReporter.getReportObject();
+    ExtentReports extent = getReportObject();
     ThreadLocal<ExtentTest> ThreadLocal = new ThreadLocal<ExtentTest>(); // TODO - Thread Safe
 
     public void onTestStart(ITestResult result) {
