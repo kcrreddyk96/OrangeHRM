@@ -109,7 +109,15 @@ public class Browser {
         reporter.config().setTheme(Theme.DARK);
         reporter.config().setCss(".badge-primary{background-color:#ed5045} .badge-success, .pass-bg, .avatar.pass{background-color:#28be3b}");
         reporter.config().setJs("document.getElementsByClassName('logo')[0].style.display='none';");
-        reporter.viewConfigurer().viewOrder().as(new ViewName[]{ViewName.DASHBOARD, ViewName.TEST, ViewName.CATEGORY, ViewName.DEVICE, ViewName.EXCEPTION, ViewName.LOG, ViewName.AUTHOR}).apply();
+        reporter.viewConfigurer().viewOrder().as(new ViewName[]{
+                ViewName.DASHBOARD,
+                ViewName.TEST,
+                ViewName.CATEGORY,
+                ViewName.DEVICE,
+                ViewName.EXCEPTION,
+                ViewName.LOG,
+                ViewName.AUTHOR
+        }).apply();
         extentreports.attachReporter(reporter);
         extentreports.setSystemInfo("Test_Environment ", properties.getProperty("Test_Environment"));
         extentreports.setSystemInfo("Application_Name ", properties.getProperty("Application_Name"));
